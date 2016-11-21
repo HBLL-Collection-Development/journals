@@ -1,0 +1,28 @@
+{
+    "name": "hbll-collection-development/journals-overlap",
+    "description": "BETA: Journals overlap database",
+    "homepage": "https://github.com/hbll-collection-development/oclc",
+    "license": "MIT",
+    "autoload": {
+        "psr-0": {
+            "Journals" : "src"
+        }
+    },
+    "authors": [{
+        "name": "Jared Howland",
+        "homepage": "http://jaredhowland.com",
+        "role": "developer"
+    }],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/jaredhowland/database"
+        }
+    ],
+    "require": {
+        "php": ">=5.6",
+        "twig/twig": "~1.0",
+        "symfony/yaml": ">=3.1.7",
+        "jaredhowland/database": "dev-master"
+    }
+}

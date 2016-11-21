@@ -1,0 +1,1391 @@
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: url(../fonts/sourcesanspro/SourceSansPro-Light.ttf) format("truetype")
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: url(../fonts/sourcesanspro/SourceSansPro-Regular.ttf) format("truetype")
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: url(../fonts/sourcesanspro/SourceSansPro-Semibold.ttf) format("truetype")
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 700;
+    src: url(../fonts/sourcesanspro/SourceSansPro-Bold.ttf) format("truetype")
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: italic;
+    font-weight: 300;
+    src: url(../fonts/sourcesanspro/SourceSansPro-LightItalic.ttf) format("truetype")
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: italic;
+    font-weight: 400;
+    src: url(../fonts/sourcesanspro/SourceSansPro-Italic.ttf) format("truetype")
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: italic;
+    font-weight: 600;
+    src: url(../fonts/sourcesanspro/SourceSansPro-SemiboldItalic.ttf) format("truetype")
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: italic;
+    font-weight: 700;
+    src: url(../fonts/sourcesanspro/SourceSansPro-BoldItalic.ttf) format("truetype")
+}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
+blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em,
+img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i,
+center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption,
+tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section,
+summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup,
+menu, nav, section {
+    display: block
+}
+
+body {
+    line-height: 1
+}
+
+ol, ul {
+    list-style: none
+}
+
+blockquote, q {
+    quotes: none
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+    content: '';
+    content: none
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+
+th {
+    font-weight: bold;
+}
+
+tr:nth-of-type(odd) {
+  background-color:#ccc;
+}
+
+html {
+    text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1
+}
+
+body {
+    font-size: .875rem;
+    line-height: 1.3125rem;
+    font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #3f3f3f;
+    background-color: #F5F5F5
+}
+
+.tera {
+    font-size: 15.6875rem;
+    line-height: 15.75rem
+}
+
+.giga {
+    font-size: 9.6875rem;
+    line-height: 10.5rem
+}
+
+.mega {
+    font-size: 6rem;
+    line-height: 6.5625rem
+}
+
+h1, .h1, .alpha {
+    font-size: 3.6875rem;
+    line-height: 3.9375rem
+}
+
+h2, .h2, .beta {
+    font-size: 2.3125rem;
+    line-height: 2.625rem
+}
+
+h3, .h3, .gamma {
+    font-size: 1.4375rem;
+    line-height: 2.625rem
+}
+
+h4, .h4, .delta {
+    font-size: .875rem;
+    line-height: 1.3125rem
+}
+
+h5, .h5, .epsilon, small, .caption {
+    font-size: .5625rem;
+    line-height: 1.3125rem
+}
+
+h6, .h6, .zeta {
+    font-size: .3125rem;
+    line-height: 1.3125rem
+}
+
+section, .section {
+    margin: 0 auto;
+    /*max-width: 36rem*/
+}
+
+@media screen and (min-width: 30rem) {
+    body {
+        font-size: .875rem;
+        line-height: 1.3125rem
+    }
+
+    .tera {
+        font-size: 15.6875rem;
+        line-height: 15.75rem
+    }
+
+    .giga {
+        font-size: 9.6875rem;
+        line-height: 10.5rem
+    }
+
+    .mega {
+        font-size: 6rem;
+        line-height: 6.5625rem
+    }
+
+    h1, .h1, .alpha {
+        font-size: 3.6875rem;
+        line-height: 3.9375rem
+    }
+
+    h2, .h2, .beta {
+        font-size: 2.3125rem;
+        line-height: 2.625rem
+    }
+
+    h3, .h3, .gamma {
+        font-size: 1.4375rem;
+        line-height: 2.625rem
+    }
+
+    h4, .h4, .delta {
+        font-size: .875rem;
+        line-height: 1.3125rem
+    }
+
+    h5, .h5, .epsilon, small, .caption {
+        font-size: .5625rem;
+        line-height: 1.3125rem
+    }
+
+    h6, .h6, .zeta {
+        font-size: .3125rem;
+        line-height: 1.3125rem
+    }
+
+    section, .section {
+        margin: 0 auto;
+        /*max-width: 36rem*/
+    }
+}
+
+@media screen and (min-width: 48rem) {
+    body {
+        font-size: 1rem;
+        line-height: 1.625rem
+    }
+
+    .tera {
+        font-size: 17.9375rem;
+        line-height: 19.5rem
+    }
+
+    .giga {
+        font-size: 11.0625rem;
+        line-height: 11.375rem
+    }
+
+    .mega {
+        font-size: 6.875rem;
+        line-height: 8.125rem
+    }
+
+    h1, .h1, .alpha {
+        font-size: 4.25rem;
+        line-height: 4.875rem
+    }
+
+    h2, .h2, .beta {
+        font-size: 2.625rem;
+        line-height: 3.25rem
+    }
+
+    h3, .h3, .gamma {
+        font-size: 1.625rem;
+        line-height: 1.625rem
+    }
+
+    h4, .h4, .delta {
+        font-size: 1rem;
+        line-height: 1.625rem
+    }
+
+    h5, .h5, .epsilon, small, .caption {
+        font-size: .625rem;
+        line-height: 1.625rem
+    }
+
+    h6, .h6, .zeta {
+        font-size: .375rem;
+        line-height: 1.625rem
+    }
+
+    section, .section {
+        margin: 0 auto;
+        /*max-width: 42.25rem*/
+    }
+}
+
+@media screen and (min-width: 62rem) {
+    body {
+        font-size: 1.125rem;
+        line-height: 1.8125rem
+    }
+
+    .tera {
+        font-size: 20.1875rem;
+        line-height: 21.75rem
+    }
+
+    .giga {
+        font-size: 12.5rem;
+        line-height: 12.6875rem
+    }
+
+    .mega {
+        font-size: 7.6875rem;
+        line-height: 9.0625rem
+    }
+
+    h1, .h1, .alpha {
+        font-size: 4.75rem;
+        line-height: 5.4375rem
+    }
+
+    h2, .h2, .beta {
+        font-size: 2.9375rem;
+        line-height: 3.625rem
+    }
+
+    h3, .h3, .gamma {
+        font-size: 1.8125rem;
+        line-height: 1.8125rem
+    }
+
+    h4, .h4, .delta {
+        font-size: 1.125rem;
+        line-height: 1.8125rem
+    }
+
+    h5, .h5, .epsilon, small, .caption {
+        font-size: .6875rem;
+        line-height: 1.8125rem
+    }
+
+    h6, .h6, .zeta {
+        font-size: .4375rem;
+        line-height: 1.8125rem
+    }
+
+    section, .section {
+        margin: 0 auto;
+        /*max-width: 41.53086rem*/
+    }
+}
+
+@media screen and (min-width: 75rem) {
+    body {
+        font-size: 1.25rem;
+        line-height: 2rem
+    }
+
+    .tera {
+        font-size: 22.4375rem;
+        line-height: 24rem
+    }
+
+    .giga {
+        font-size: 13.875rem;
+        line-height: 14rem
+    }
+
+    .mega {
+        font-size: 8.5625rem;
+        line-height: 10rem
+    }
+
+    h1, .h1, .alpha {
+        font-size: 5.3125rem;
+        line-height: 6rem
+    }
+
+    h2, .h2, .beta {
+        font-size: 3.25rem;
+        line-height: 4rem
+    }
+
+    h3, .h3, .gamma {
+        font-size: 2rem;
+        line-height: 2rem
+    }
+
+    h4, .h4, .delta {
+        font-size: 1.25rem;
+        line-height: 2rem
+    }
+
+    h5, .h5, .epsilon, small, .caption {
+        font-size: .75rem;
+        line-height: 2rem
+    }
+
+    h6, .h6, .zeta {
+        font-size: .5rem;
+        line-height: 2rem
+    }
+
+    section, .section {
+        margin: 0 auto;
+        /*max-width: 40.96rem*/
+    }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: Georgia, serif
+}
+
+p + p {
+    text-indent: 1rem
+}
+
+p + .drop-cap {
+    text-indent: 0
+}
+
+a {
+    color: #265C83;
+    text-decoration: none
+}
+
+a:hover, a:active, a:focus {
+    color: #3178ab;
+    background-color: transparent;
+    transition: background-color .4s, color .4s
+}
+
+strong, b, .bold {
+    font-weight: 700
+}
+
+em, i, .italic {
+    font-style: italic
+}
+
+ol li, ul li {
+    font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
+    margin-left: 0
+}
+
+ul {
+    list-style-type: disc
+}
+
+ol {
+    list-style-type: decimal
+}
+
+blockquote p {
+    border-left: 0.25rem solid #ccc;
+    font-style: italic;
+    padding-left: 1rem;
+    font-size: 1rem;
+    line-height: 1.3125rem
+}
+
+@media screen and (min-width: 30rem) {
+    blockquote p {
+        font-size: 1rem;
+        line-height: 1.3125rem
+    }
+}
+
+@media screen and (min-width: 48rem) {
+    blockquote p {
+        font-size: 1rem;
+        line-height: 1.625rem
+    }
+}
+
+@media screen and (min-width: 62rem) {
+    blockquote p {
+        font-size: 1rem;
+        line-height: 1.8125rem
+    }
+}
+
+@media screen and (min-width: 75rem) {
+    blockquote p {
+        font-size: 1rem;
+        line-height: 2rem
+    }
+}
+
+pre, code {
+    font-family: Menlo, monospace;
+    background-color: #e3e3e3;
+    border-radius: 4px;
+    vertical-align: top;
+    font-size: .5625rem;
+    line-height: 1.3125rem
+}
+
+@media screen and (min-width: 30rem) {
+    pre, code {
+        font-size: .5625rem;
+        line-height: 1.3125rem
+    }
+}
+
+@media screen and (min-width: 48rem) {
+    pre, code {
+        font-size: .625rem;
+        line-height: 1.625rem
+    }
+}
+
+@media screen and (min-width: 62rem) {
+    pre, code {
+        font-size: .6875rem;
+        line-height: 1.8125rem
+    }
+}
+
+@media screen and (min-width: 75rem) {
+    pre, code {
+        font-size: .75rem;
+        line-height: 2rem
+    }
+}
+
+pre {
+    padding: 1.3125rem;
+    overflow: auto;
+    max-height: 13.125rem
+}
+
+@media screen and (min-width: 30rem) {
+    pre {
+        padding: 1.3125rem
+    }
+}
+
+@media screen and (min-width: 48rem) {
+    pre {
+        padding: 1.625rem
+    }
+}
+
+@media screen and (min-width: 62rem) {
+    pre {
+        padding: 1.8125rem
+    }
+}
+
+@media screen and (min-width: 75rem) {
+    pre {
+        padding: 2rem
+    }
+}
+
+@media screen and (min-width: 30rem) {
+    pre {
+        max-height: 13.125rem
+    }
+}
+
+@media screen and (min-width: 48rem) {
+    pre {
+        max-height: 16.25rem
+    }
+}
+
+@media screen and (min-width: 62rem) {
+    pre {
+        max-height: 18.125rem
+    }
+}
+
+@media screen and (min-width: 75rem) {
+    pre {
+        max-height: 20rem
+    }
+}
+
+pre code[class]:before {
+    content: attr(data-lang);
+    float: right;
+    padding: 0 .3em;
+    text-transform: uppercase;
+    background: #fdfdfd;
+    border-radius: 4px
+}
+
+.drop-cap:first-letter {
+    float: left;
+    margin: 10px 10px 0 0;
+    padding: 0 20px;
+    font-size: 4em;
+    font-family: inherit;
+    line-height: 1;
+    text-indent: 0;
+    background: transparent;
+    color: inherit
+}
+
+.caption {
+    color: #727272
+}
+
+.upper {
+    letter-spacing: .1rem;
+    text-transform: uppercase
+}
+
+.small-caps {
+    font-feature-settings: 'smcp' 1, 'kern' 1;
+    letter-spacing: .1rem
+}
+
+.lining-numerals {
+    font-feature-settings: 'lnum' 1, 'kern' 1
+}
+
+.oldstyle-numerals {
+    font-feature-settings: 'onum' 1, 'kern' 1
+}
+
+body {
+    background-color: #a5a5a5
+}
+
+h1 {
+    color: #ba614f;
+    padding-top: 1.3125rem;
+    padding-bottom: 1.3125rem;
+    font-size: 2.3125rem;
+    line-height: 2.625rem
+}
+
+@media screen and (min-width: 30rem) {
+    h1 {
+        padding-top: 1.3125rem;
+        padding-bottom: 1.3125rem
+    }
+}
+
+@media screen and (min-width: 48rem) {
+    h1 {
+        padding-top: 1.625rem;
+        padding-bottom: 1.625rem
+    }
+}
+
+@media screen and (min-width: 62rem) {
+    h1 {
+        padding-top: 1.8125rem;
+        padding-bottom: 1.8125rem
+    }
+}
+
+@media screen and (min-width: 75rem) {
+    h1 {
+        padding-top: 2rem;
+        padding-bottom: 2rem
+    }
+}
+
+@media screen and (min-width: 30rem) {
+    h1 {
+        font-size: 2.3125rem;
+        line-height: 2.625rem
+    }
+}
+
+@media screen and (min-width: 48rem) {
+    h1 {
+        font-size: 2.625rem;
+        line-height: 3.25rem
+    }
+}
+
+@media screen and (min-width: 62rem) {
+    h1 {
+        font-size: 2.9375rem;
+        line-height: 3.625rem
+    }
+}
+
+@media screen and (min-width: 75rem) {
+    h1 {
+        font-size: 3.25rem;
+        line-height: 4rem
+    }
+}
+
+h2, h3, h4, h5, h6 {
+    padding-top: 1.3125rem;
+    color: #204069
+}
+
+@media screen and (min-width: 30rem) {
+    h2, h3, h4, h5, h6 {
+        padding-top: 1.3125rem
+    }
+}
+
+@media screen and (min-width: 48rem) {
+    h2, h3, h4, h5, h6 {
+        padding-top: 1.625rem
+    }
+}
+
+@media screen and (min-width: 62rem) {
+    h2, h3, h4, h5, h6 {
+        padding-top: 1.8125rem
+    }
+}
+
+@media screen and (min-width: 75rem) {
+    h2, h3, h4, h5, h6 {
+        padding-top: 2rem
+    }
+}
+
+h2 {
+    font-size: 1.4375rem;
+    line-height: 2.625rem;
+    color: #3f3f3f;
+    font-style: italic
+}
+
+@media screen and (min-width: 30rem) {
+    h2 {
+        font-size: 1.4375rem;
+        line-height: 2.625rem
+    }
+}
+
+@media screen and (min-width: 48rem) {
+    h2 {
+        font-size: 1.625rem;
+        line-height: 1.625rem
+    }
+}
+
+@media screen and (min-width: 62rem) {
+    h2 {
+        font-size: 1.8125rem;
+        line-height: 1.8125rem
+    }
+}
+
+@media screen and (min-width: 75rem) {
+    h2 {
+        font-size: 2rem;
+        line-height: 2rem
+    }
+}
+
+h3 {
+    font-size: .875rem;
+    line-height: 1.3125rem;
+    color: #ba614f
+}
+
+@media screen and (min-width: 30rem) {
+    h3 {
+        font-size: .875rem;
+        line-height: 1.3125rem
+    }
+}
+
+@media screen and (min-width: 48rem) {
+    h3 {
+        font-size: 1rem;
+        line-height: 1.625rem
+    }
+}
+
+@media screen and (min-width: 62rem) {
+    h3 {
+        font-size: 1.125rem;
+        line-height: 1.8125rem
+    }
+}
+
+@media screen and (min-width: 75rem) {
+    h3 {
+        font-size: 1.25rem;
+        line-height: 2rem
+    }
+}
+
+h3 a {
+    color: #ba614f
+}
+
+h4 {
+    color: #595959
+}
+
+ul li, ol li {
+    margin: 0rem 1.3125rem
+}
+
+@media screen and (min-width: 30rem) {
+    ul li, ol li {
+        margin: 0rem 1.3125rem
+    }
+}
+
+@media screen and (min-width: 48rem) {
+    ul li, ol li {
+        margin: 0rem 1.625rem
+    }
+}
+
+@media screen and (min-width: 62rem) {
+    ul li, ol li {
+        margin: 0rem 1.8125rem
+    }
+}
+
+@media screen and (min-width: 75rem) {
+    ul li, ol li {
+        margin: 0rem 2rem
+    }
+}
+
+ul li ul, ul li ol, ol li ul, ol li ol {
+    padding-top: 0rem
+}
+
+@media screen and (min-width: 30rem) {
+    ul li ul, ul li ol, ol li ul, ol li ol {
+        padding-top: 0rem
+    }
+}
+
+@media screen and (min-width: 48rem) {
+    ul li ul, ul li ol, ol li ul, ol li ol {
+        padding-top: 0rem
+    }
+}
+
+@media screen and (min-width: 62rem) {
+    ul li ul, ul li ol, ol li ul, ol li ol {
+        padding-top: 0rem
+    }
+}
+
+@media screen and (min-width: 75rem) {
+    ul li ul, ul li ol, ol li ul, ol li ol {
+        padding-top: 0rem
+    }
+}
+
+ul li ul li, ul li ol li, ol li ul li, ol li ol li {
+    margin: 0rem 1.3125rem
+}
+
+@media screen and (min-width: 30rem) {
+    ul li ul li, ul li ol li, ol li ul li, ol li ol li {
+        margin: 0rem 1.3125rem
+    }
+}
+
+@media screen and (min-width: 48rem) {
+    ul li ul li, ul li ol li, ol li ul li, ol li ol li {
+        margin: 0rem 1.625rem
+    }
+}
+
+@media screen and (min-width: 62rem) {
+    ul li ul li, ul li ol li, ol li ul li, ol li ol li {
+        margin: 0rem 1.8125rem
+    }
+}
+
+@media screen and (min-width: 75rem) {
+    ul li ul li, ul li ol li, ol li ul li, ol li ol li {
+        margin: 0rem 2rem
+    }
+}
+
+nav {
+    background-color: #3f3f3f
+}
+
+nav header {
+    padding: 1.3125rem;
+    background-color: #204069;
+    height: 1rem
+}
+
+@media screen and (min-width: 30rem) {
+    nav header {
+        padding: 1.3125rem
+    }
+}
+
+@media screen and (min-width: 48rem) {
+    nav header {
+        padding: 1.625rem
+    }
+}
+
+@media screen and (min-width: 62rem) {
+    nav header {
+        padding: 1.8125rem
+    }
+}
+
+@media screen and (min-width: 75rem) {
+    nav header {
+        padding: 2rem
+    }
+}
+
+nav header img {
+    height: 70%;
+    max-width: 100%;
+    max-height: 1em;
+    vertical-align: center
+}
+
+nav ul {
+    padding: 0rem
+}
+
+@media screen and (min-width: 30rem) {
+    nav ul {
+        padding: 0rem
+    }
+}
+
+@media screen and (min-width: 48rem) {
+    nav ul {
+        padding: 0rem
+    }
+}
+
+@media screen and (min-width: 62rem) {
+    nav ul {
+        padding: 0rem
+    }
+}
+
+@media screen and (min-width: 75rem) {
+    nav ul {
+        padding: 0rem
+    }
+}
+
+nav ul li {
+    list-style: none;
+    height: 100%;
+    display: inline-block;
+    margin: 0
+}
+
+nav ul li a {
+    display: inline-block;
+    padding: .65625rem 1.3125rem;
+    color: #F5F5F5
+}
+
+@media screen and (min-width: 30rem) {
+    nav ul li a {
+        padding: .65625rem 1.3125rem
+    }
+}
+
+@media screen and (min-width: 48rem) {
+    nav ul li a {
+        padding: .8125rem 1.625rem
+    }
+}
+
+@media screen and (min-width: 62rem) {
+    nav ul li a {
+        padding: .90625rem 1.8125rem
+    }
+}
+
+@media screen and (min-width: 75rem) {
+    nav ul li a {
+        padding: 1rem 2rem
+    }
+}
+
+nav ul li a:hover {
+    background-color: #656565;
+    color: #F5F5F5
+}
+
+section {
+    padding: 0rem 1.3125rem
+}
+
+@media screen and (min-width: 30rem) {
+    section {
+        padding: 0rem 1.3125rem
+    }
+}
+
+@media screen and (min-width: 48rem) {
+    section {
+        padding: 0rem 1.625rem
+    }
+}
+
+@media screen and (min-width: 62rem) {
+    section {
+        padding: 0rem 1.8125rem
+    }
+}
+
+@media screen and (min-width: 75rem) {
+    section {
+        padding: 0rem 2rem
+    }
+}
+
+section p {
+    padding-top: 1.3125rem
+}
+
+@media screen and (min-width: 30rem) {
+    section p {
+        padding-top: 1.3125rem
+    }
+}
+
+@media screen and (min-width: 48rem) {
+    section p {
+        padding-top: 1.625rem
+    }
+}
+
+@media screen and (min-width: 62rem) {
+    section p {
+        padding-top: 1.8125rem
+    }
+}
+
+@media screen and (min-width: 75rem) {
+    section p {
+        padding-top: 2rem
+    }
+}
+
+section p + p {
+    text-indent: 0
+}
+
+section td {
+    padding: .32813rem;
+}
+
+section td:not(:last-child) {
+    border-right: 1px solid #3f3f3f;
+}
+
+@media screen and (min-width: 30rem) {
+    section td {
+        padding: .32813rem
+    }
+}
+
+@media screen and (min-width: 48rem) {
+    section td {
+        padding: .40625rem
+    }
+}
+
+@media screen and (min-width: 62rem) {
+    section td {
+        padding: .45313rem
+    }
+}
+
+@media screen and (min-width: 75rem) {
+    section td {
+        padding: .5rem
+    }
+}
+
+section tr:hover {
+    background-color: #3f3f3f;
+    color: #F5F5F5
+}
+
+section th {
+    background-color: #3f3f3f;
+    color: #F5F5F5
+}
+
+section .description {
+    font-size: 2.3125rem;
+    line-height: 2.625rem
+}
+
+@media screen and (min-width: 30rem) {
+    section .description {
+        font-size: 2.3125rem;
+        line-height: 2.625rem
+    }
+}
+
+@media screen and (min-width: 48rem) {
+    section .description {
+        font-size: 2.625rem;
+        line-height: 3.25rem
+    }
+}
+
+@media screen and (min-width: 62rem) {
+    section .description {
+        font-size: 2.9375rem;
+        line-height: 3.625rem
+    }
+}
+
+@media screen and (min-width: 75rem) {
+    section .description {
+        font-size: 3.25rem;
+        line-height: 4rem
+    }
+}
+
+footer {
+    clear: both;
+    color: #F5F5F5;
+    background-color: #3f3f3f;
+    padding: 1.3125rem;
+    margin-top: 2.625rem
+}
+
+@media screen and (min-width: 30rem) {
+    footer {
+        padding: 1.3125rem
+    }
+}
+
+@media screen and (min-width: 48rem) {
+    footer {
+        padding: 1.625rem
+    }
+}
+
+@media screen and (min-width: 62rem) {
+    footer {
+        padding: 1.8125rem
+    }
+}
+
+@media screen and (min-width: 75rem) {
+    footer {
+        padding: 2rem
+    }
+}
+
+@media screen and (min-width: 30rem) {
+    footer {
+        margin-top: 2.625rem
+    }
+}
+
+@media screen and (min-width: 48rem) {
+    footer {
+        margin-top: 3.25rem
+    }
+}
+
+@media screen and (min-width: 62rem) {
+    footer {
+        margin-top: 3.625rem
+    }
+}
+
+@media screen and (min-width: 75rem) {
+    footer {
+        margin-top: 4rem
+    }
+}
+
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+    top: -0.5em
+}
+
+.main {
+    max-width: 80rem;
+    margin: 0 auto;
+    background-color: #F5F5F5
+}
+
+.policy h1 {
+    font-size: 1.4375rem;
+    line-height: 2.625rem;
+    font-style: italic
+}
+
+@media screen and (min-width: 30rem) {
+    .policy h1 {
+        font-size: 1.4375rem;
+        line-height: 2.625rem
+    }
+}
+
+@media screen and (min-width: 48rem) {
+    .policy h1 {
+        font-size: 1.625rem;
+        line-height: 1.625rem
+    }
+}
+
+@media screen and (min-width: 62rem) {
+    .policy h1 {
+        font-size: 1.8125rem;
+        line-height: 1.8125rem
+    }
+}
+
+@media screen and (min-width: 75rem) {
+    .policy h1 {
+        font-size: 2rem;
+        line-height: 2rem
+    }
+}
+
+.policy h1 span {
+    font-style: normal;
+    color: #3f3f3f;
+    display: block;
+    padding: 1.3125rem 0rem
+}
+
+@media screen and (min-width: 30rem) {
+    .policy h1 span {
+        padding: 1.3125rem 0rem
+    }
+}
+
+@media screen and (min-width: 48rem) {
+    .policy h1 span {
+        padding: 1.625rem 0rem
+    }
+}
+
+@media screen and (min-width: 62rem) {
+    .policy h1 span {
+        padding: 1.8125rem 0rem
+    }
+}
+
+@media screen and (min-width: 75rem) {
+    .policy h1 span {
+        padding: 2rem 0rem
+    }
+}
+
+.breadcrumb {
+    padding: 1.3125rem 0rem 0rem 1.3125rem
+}
+
+@media screen and (min-width: 30rem) {
+    .breadcrumb {
+        padding: 1.3125rem 0rem 0rem 1.3125rem
+    }
+}
+
+@media screen and (min-width: 48rem) {
+    .breadcrumb {
+        padding: 1.625rem 0rem 0rem 1.625rem
+    }
+}
+
+@media screen and (min-width: 62rem) {
+    .breadcrumb {
+        padding: 1.8125rem 0rem 0rem 1.8125rem
+    }
+}
+
+@media screen and (min-width: 75rem) {
+    .breadcrumb {
+        padding: 2rem 0rem 0rem 2rem
+    }
+}
+
+.muted {
+    font-size: 1rem;
+    line-height: 1.3125rem;
+    padding: 0rem;
+    margin-top: -1.3125rem;
+    font-style: italic !important
+}
+
+@media screen and (min-width: 30rem) {
+    .muted {
+        font-size: 1rem;
+        line-height: 1.3125rem
+    }
+}
+
+@media screen and (min-width: 48rem) {
+    .muted {
+        font-size: 1rem;
+        line-height: 1.625rem
+    }
+}
+
+@media screen and (min-width: 62rem) {
+    .muted {
+        font-size: 1rem;
+        line-height: 1.8125rem
+    }
+}
+
+@media screen and (min-width: 75rem) {
+    .muted {
+        font-size: 1rem;
+        line-height: 2rem
+    }
+}
+
+@media screen and (min-width: 30rem) {
+    .muted {
+        padding: 0rem
+    }
+}
+
+@media screen and (min-width: 48rem) {
+    .muted {
+        padding: 0rem
+    }
+}
+
+@media screen and (min-width: 62rem) {
+    .muted {
+        padding: 0rem
+    }
+}
+
+@media screen and (min-width: 75rem) {
+    .muted {
+        padding: 0rem
+    }
+}
+
+@media screen and (min-width: 30rem) {
+    .muted {
+        margin-top: -1.3125rem
+    }
+}
+
+@media screen and (min-width: 48rem) {
+    .muted {
+        margin-top: -1.625rem
+    }
+}
+
+@media screen and (min-width: 62rem) {
+    .muted {
+        margin-top: -1.8125rem
+    }
+}
+
+@media screen and (min-width: 75rem) {
+    .muted {
+        margin-top: -2rem
+    }
+}
+
+@media all and (min-width: 768px) {
+    section .col {
+        padding-bottom: 2.625rem;
+        float: left;
+        width: 50%
+    }
+
+    section .col h1 {
+        font-size: 2.3125rem;
+        line-height: 2.625rem
+    }
+
+    section .col ul {
+        padding-top: 0rem
+    }
+
+    section .small {
+        display: none
+    }
+
+    section #funds h1, section #librarians h1 {
+        padding-bottom: 1.3125rem
+    }
+
+    section #funds h3.first, section #librarians h3.first {
+        padding-top: 0rem
+    }
+}

@@ -1,0 +1,82 @@
+{% set title = [fund, ' Fund Code']|join %}
+
+{% set content %}
+    <h1>Fund Code {{ fund }}</h1>
+    <table>
+        <tr><th>Title</th><th>Price</th><th>Platforms</th><th>2016 YTD Use</th><th>2015 Use</th><th>h-index</th><th>IPP</th></tr>
+        {% for journal in journals %}
+
+            {% set issn %}
+                {% if journal.sfxIssn and journal.sfxEIssn %}
+                    {% set formattedIssn = journal.sfxIssn|split('', 4) %}
+                    {% set formattedEIssn = journal.sfxEIssn|split('', 4) %}
+                    ISSN {{ formattedIssn.0 }}-{{ formattedIssn.1 }} <br/>eISSN {{ formattedEIssn.0 }}-{{ formattedEIssn.1 }}
+                {% elseif journal.sfxIssn %}
+                    {% set formattedIssn = journal.sfxIssn|split('', 4) %}
+                    ISSN {{ formattedIssn.0 }}-{{ formattedIssn.1 }}
+                {% elseif journal.sfxEIssn %}
+                    {% set formattedEIssn = journal.sfxEIssn|split('', 4) %}
+                    eISSN {{ formattedEIssn.0 }}-{{ formattedEIssn.1 }}
+                {% endif %}
+            {% endset %}
+
+            {% set price %}
+                {% if journal.price2016 > 0 %}
+                    ${{ journal.price2016|number_format }}
+                {% elseif journal.price2015 > 0 %}
+                    ${{ journal.price2015|number_format }}
+                {% else %}
+                    No data
+                {% endif %}
+            {% endset %}
+
+            {% set platforms %}
+                {% if journal.platforms is not null%}
+                    <ol>
+                    {% for platform in journal.platforms|split('|') %}
+                        <li>{{ platform }}</li>
+                    {% endfor %}
+                    </ol>
+                {% else %}
+                    No data
+                {% endif %}
+            {% endset %}
+
+            {% set usageLatest %}
+                {% if journal.usage2016 is not null %}
+                    {{ journal.usage2016|number_format }}
+                {% else %}
+                    No data
+                {% endif %}
+            {% endset %}
+
+            {% set usageLastYear %}
+                {% if journal.usage2015 is not null %}
+                    {{ journal.usage2015|number_format }}
+                {% else %}
+                    No data
+                {% endif %}
+            {% endset %}
+
+            {% set hIndex %}
+                {% if journal.hIndex is not null %}
+                    {{ journal.hIndex }}
+                {% else %}
+                    No data
+                {% endif %}
+            {% endset %}
+
+            {% set ipp %}
+                {% if journal.`ipp2015` is not null %}
+                    {{ journal.`ipp2015` }}
+                {% else %}
+                    No data
+                {% endif %}
+            {% endset %}
+
+            <tr><td>{{ journal.sfxTitle }}<br>{{ issn }}</td><td>{{ price }}</td><td>{{ platforms }}</td><td>{{ usageLatest }}</td><td>{{ usageLastYear }}</td><td>{{ hIndex }}</td><td>{{ ipp }}</td></tr>
+        {% endfor %}
+    </table>
+{% endset %}
+
+{% include 'base.tmpl' %}

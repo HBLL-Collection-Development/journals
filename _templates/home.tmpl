@@ -1,0 +1,13 @@
+{% set title = 'Home :: Journals Overlap Database' %}
+
+{% set content %}
+    <h1>Fund Codes</h1>
+
+    <ul>
+    {% for fund in funds %}
+        <li><a href="fund.php?fund={{ fund.subAccount }}">{{ fund.subAccount }}</a></li>
+    {% endfor %}
+    </ul>
+{% endset %}
+
+{% include 'base.tmpl' %}
