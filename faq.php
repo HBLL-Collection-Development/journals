@@ -2,11 +2,7 @@
 
 require_once 'vendor/autoload.php';
 
-Twig_Autoloader::register();
-
-$loader = new Twig_Loader_Filesystem('_templates');
-
-$twig = new Twig_Environment($loader);
+$configs = \Journals\Config::get();
 
 $html = <<<'HTML'
 <h1>FAQs</h1>
@@ -33,4 +29,4 @@ $html = <<<'HTML'
 
 HTML;
 
-$twig->display('base.tmpl', array('content' => $html));
+new \Journals\Twig('base.tmpl', array('content' => $html));
