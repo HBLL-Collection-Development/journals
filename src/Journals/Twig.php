@@ -38,6 +38,7 @@ namespace Journals;
             ));
          }
 
+         // Custom function to format numbers
          $format_number = new \Twig_SimpleFunction('format_number', function ($number) {
              if (!is_null($number)) {
                  echo number_format($number);
@@ -48,6 +49,7 @@ namespace Journals;
 
          $twig->addFunction($format_number);
 
+         // Custom function to show `No data` when `null`
          $no_data = new \Twig_SimpleFunction('no_data', function ($number) {
              if (!is_null($number)) {
                  echo $number;

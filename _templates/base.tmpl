@@ -1,5 +1,5 @@
-{% set url   = (url|default('http://localhost:8888/journals')) %}
-{% set title = (title|default('Journals Overlap Database')) %}
+{% set url = (url|default(url)) %}
+{% set title = (title|default(defaultTitle)) %}
 
 {% include '_head.tmpl' %}
 

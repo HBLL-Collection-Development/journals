@@ -10,7 +10,7 @@ $html = <<<'HTML'
 <p>Impact per Publication (IPP): Measures the ratio of citations per article published in a journal. Unlike the standard impact factor, the IPP metric uses a three year citation window, widely considered to be the optimal time period to accurately measure citations in most subject fields.</p>
 
 <p><strong>What is the SJR?</strong></p>
-<p>SCImago Journal Rank (SJR)) indicator: It expresses the average number of weighted citations received in the selected year by the documents published in the selected journal in the three previous years, --i.e. weighted citations received in year X to documents published in the journal in years X-1, X-2 and X-3. See <a href="http://www.scimagojr.com/SCImagoJournalRank.pdf">detailed description of SJR</a> (PDF).</p>
+<p>SCImago Journal Rank (SJR)) indicator: It expresses the average number of weighted citations received in the selected year by the documents published in the selected journal in the three previous years, <em>i.e.</em> weighted citations received in year X to documents published in the journal in years X-1, X-2 and X-3. See <a href="http://www.scimagojr.com/SCImagoJournalRank.pdf">detailed description of SJR</a> (PDF).</p>
 
 <p><strong>What is the h-index?</strong></p>
 <p>The h-index expresses the journal&rsquo;s number of articles (h) that have received at least h citations. It quantifies both journal scientific productivity and scientific impact and it is also applicable to scientists, countries, etc. (see <a href="http://en.wikipedia.org/wiki/Hirsch_number">H-index wikipedia definition</a>).</p>
@@ -29,4 +29,4 @@ $html = <<<'HTML'
 
 HTML;
 
-new \Journals\Twig('base.tmpl', array('content' => $html));
+new \Journals\Twig('base.tmpl', array('title' => 'FAQs', 'content' => $html));
