@@ -22,7 +22,7 @@ $fund = filter_var($_REQUEST['fund'], FILTER_SANITIZE_STRING);
 
 $db = new Database\Database($configs['database']['host'], $configs['database']['username'], $configs['database']['password'], $configs['database']['database']);
 $db->query('SELECT * FROM `journals` WHERE `subAccount` = '.$fund.' GROUP BY `titleControl` ORDER BY `sfxSortableTitle`');
-$journals = $db->resultSet(0);
+$journals = $db->resultSet();
 $db = null;
 
 $twig->display('fund.tmpl', array('fund' => $fund, 'journals' => $journals));

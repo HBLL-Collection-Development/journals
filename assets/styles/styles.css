@@ -413,6 +413,10 @@ a {
     text-decoration: none
 }
 
+table a {
+    text-decoration: underline
+}
+
 a:hover, a:active, a:focus {
     color: #3178ab;
     background-color: transparent;
@@ -1074,6 +1078,10 @@ section td:not(:last-child) {
 section tr:hover {
     background-color: #3f3f3f;
     color: #F5F5F5
+}
+
+section tr:hover a {
+    color: #ccc
 }
 
 section th {

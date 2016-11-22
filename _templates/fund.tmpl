@@ -67,14 +67,14 @@
             {% endset %}
 
             {% set ipp %}
-                {% if journal.`ipp2015` is not null %}
-                    {{ journal.`ipp2015` }}
+                {% if journal.ipp2015 is not null %}
+                    {{ journal.ipp2015 }}
                 {% else %}
                     No data
                 {% endif %}
             {% endset %}
 
-            <tr><td>{{ journal.sfxTitle }}<br>{{ issn }}</td><td>{{ price }}</td><td>{{ platforms }}</td><td>{{ usageLatest }}</td><td>{{ usageLastYear }}</td><td>{{ hIndex }}</td><td>{{ ipp }}</td></tr>
+            <tr><td><a href="journal.php?titleControl={{ journal.titleControl }}">{{ journal.sfxTitle }}</a><br>{{ issn }}</td><td>{{ price }}</td><td>{{ platforms }}</td><td>{{ usageLatest }}</td><td>{{ usageLastYear }}</td><td>{{ hIndex }}</td><td>{{ ipp }}</td></tr>
         {% endfor %}
     </table>
 {% endset %}

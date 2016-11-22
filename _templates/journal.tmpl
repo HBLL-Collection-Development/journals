@@ -1,0 +1,123 @@
+{% set title = journal.sfxTitle %}
+
+{% set issn %}
+    {% if journal.sfxIssn and journal.sfxEIssn %}
+        {% set formattedIssn = journal.sfxIssn|split('', 4) %}
+        {% set formattedEIssn = journal.sfxEIssn|split('', 4) %}
+        ISSN {{ formattedIssn.0 }}-{{ formattedIssn.1 }} <br/>eISSN {{ formattedEIssn.0 }}-{{ formattedEIssn.1 }}
+    {% elseif journal.sfxIssn %}
+        {% set formattedIssn = journal.sfxIssn|split('', 4) %}
+        ISSN {{ formattedIssn.0 }}-{{ formattedIssn.1 }}
+    {% elseif journal.sfxEIssn %}
+        {% set formattedEIssn = journal.sfxEIssn|split('', 4) %}
+        eISSN {{ formattedEIssn.0 }}-{{ formattedEIssn.1 }}
+    {% endif %}
+{% endset %}
+
+{% set price %}
+    {% if journal.price2016 > 0 %}
+        ${{ journal.price2016|number_format }}
+    {% elseif journal.price2015 > 0 %}
+        ${{ journal.price2015|number_format }}
+    {% else %}
+        No data
+    {% endif %}
+{% endset %}
+
+{% set platforms %}
+    {% if journal.platforms is not null%}
+        <ol>
+        {% for platform in journal.platforms|split('|') %}
+            <li>{{ platform }}</li>
+        {% endfor %}
+        </ol>
+    {% else %}
+        No data
+    {% endif %}
+{% endset %}
+
+{% set usageLatest %}
+    {% if journal.usage2016 is not null %}
+        {{ journal.usage2016|number_format }}
+    {% else %}
+        No data
+    {% endif %}
+{% endset %}
+
+{% set usageLastYear %}
+    {% if journal.usage2015 is not null %}
+        {{ journal.usage2015|number_format }}
+    {% else %}
+        No data
+    {% endif %}
+{% endset %}
+
+{% set hIndex %}
+    {% if journal.hIndex is not null %}
+        {{ journal.hIndex }}
+    {% else %}
+        No data
+    {% endif %}
+{% endset %}
+
+{% set ipp %}
+    {% if journal.ipp2015 is not null %}
+        {{ journal.ipp2015 }}
+    {% else %}
+        No data
+    {% endif %}
+{% endset %}
+
+{% set content %}
+    <h1>{{ journal.sfxTitle }}</h1>
+    <h2>{{ issn }}</h2>
+    <h3>BYU Usage</h3>
+    <table>
+        <tr><th>Year</th><th>Usage</th></tr>
+        <tr><td>2016</td><td>{{ format_number(journal.usage2016) }}</td></tr>
+        <tr><td>2015</td><td>{{ format_number(journal.usage2015) }}</td></tr>
+        <tr><td>2014</td><td>{{ format_number(journal.usage2014) }}</td></tr>
+        <tr><td>2013</td><td>{{ format_number(journal.usage2013) }}</td></tr>
+        <tr><td>2012</td><td>{{ format_number(journal.usage2012) }}</td></tr>
+    </table>
+
+    <h3>2015 Journal Bibliometrics</h3>
+    <table>
+        <tr><th>Metric</th><th>Number</th></tr>
+        <tr><td>Total Docs (2015)</td><td>{{ no_data(journal.totalDocs2015) }}</td></tr>
+        <tr><td>Total Docs (3 years)</td><td>{{ no_data(journal.totalDocs3Years) }}</td></tr>
+        <tr><td>Total References</td><td>{{ no_data(journal.totalRefs) }}</td></tr>
+        <tr><td>Total Cites (3 years)</td><td>{{ no_data(journal.totalCites3Years) }}</td></tr>
+        <tr><td>Citable Docs (3 years)</td><td>{{ no_data(journal.citableDocs3Years) }}</td></tr>
+        <tr><td>Cites Per Doc (2 years)</td><td>{{ no_data(journal.citesPerDoc2Years) }}</td></tr>
+        <tr><td>References per Doc</td><td>{{ no_data(journal.refsPerDoc) }}</td></tr>
+        <tr><td>h-index</td><td>{{ no_data(journal.hIndex) }}</td></tr>
+        <tr><td>SNIP</td><td>{{ no_data(journal.snip2015) }}</td></tr>
+        <tr><td>SJR</td><td>{{ no_data(journal.sjr2015) }}</td></tr>
+        <tr><td>IPP</td><td>{{ no_data(journal.ipp2015) }}</td></tr>
+    </table>
+
+    <h3>Historical Journal Bibliometrics</h3>
+    <table>
+        <tr><th>Year</th><th>SNIP</th><th>SJR</th><th>IPP</th></tr>
+        <tr><td>2015</td><td>{{ no_data(journal.snip2015) }}</td><td>{{ no_data(journal.sjr2015) }}</td><td>{{ no_data(journal.ipp2015) }}</td></tr>
+        <tr><td>2014</td><td>{{ no_data(journal.snip2014) }}</td><td>{{ no_data(journal.sjr2014) }}</td><td>{{ no_data(journal.ipp2014) }}</td></tr>
+        <tr><td>2013</td><td>{{ no_data(journal.snip2013) }}</td><td>{{ no_data(journal.sjr2013) }}</td><td>{{ no_data(journal.ipp2013) }}</td></tr>
+        <tr><td>2012</td><td>{{ no_data(journal.snip2012) }}</td><td>{{ no_data(journal.sjr2012) }}</td><td>{{ no_data(journal.ipp2012) }}</td></tr>
+        <tr><td>2011</td><td>{{ no_data(journal.snip2011) }}</td><td>{{ no_data(journal.sjr2011) }}</td><td>{{ no_data(journal.ipp2011) }}</td></tr>
+        <tr><td>2010</td><td>{{ no_data(journal.snip2010) }}</td><td>{{ no_data(journal.sjr2010) }}</td><td>{{ no_data(journal.ipp2010) }}</td></tr>
+        <tr><td>2009</td><td>{{ no_data(journal.snip2009) }}</td><td>{{ no_data(journal.sjr2009) }}</td><td>{{ no_data(journal.ipp2009) }}</td></tr>
+        <tr><td>2008</td><td>{{ no_data(journal.snip2008) }}</td><td>{{ no_data(journal.sjr2008) }}</td><td>{{ no_data(journal.ipp2008) }}</td></tr>
+        <tr><td>2007</td><td>{{ no_data(journal.snip2007) }}</td><td>{{ no_data(journal.sjr2007) }}</td><td>{{ no_data(journal.ipp2007) }}</td></tr>
+        <tr><td>2006</td><td>{{ no_data(journal.snip2006) }}</td><td>{{ no_data(journal.sjr2006) }}</td><td>{{ no_data(journal.ipp2006) }}</td></tr>
+        <tr><td>2005</td><td>{{ no_data(journal.snip2005) }}</td><td>{{ no_data(journal.sjr2005) }}</td><td>{{ no_data(journal.ipp2005) }}</td></tr>
+        <tr><td>2004</td><td>{{ no_data(journal.snip2004) }}</td><td>{{ no_data(journal.sjr2004) }}</td><td>{{ no_data(journal.ipp2004) }}</td></tr>
+        <tr><td>2003</td><td>{{ no_data(journal.snip2003) }}</td><td>{{ no_data(journal.sjr2003) }}</td><td>{{ no_data(journal.ipp2003) }}</td></tr>
+        <tr><td>2002</td><td>{{ no_data(journal.snip2002) }}</td><td>{{ no_data(journal.sjr2002) }}</td><td>{{ no_data(journal.ipp2002) }}</td></tr>
+        <tr><td>2001</td><td>{{ no_data(journal.snip2001) }}</td><td>{{ no_data(journal.sjr2001) }}</td><td>{{ no_data(journal.ipp2001) }}</td></tr>
+        <tr><td>2000</td><td>{{ no_data(journal.snip2000) }}</td><td>{{ no_data(journal.sjr2000) }}</td><td>{{ no_data(journal.ipp2000) }}</td></tr>
+        <tr><td>1999</td><td>{{ no_data(journal.snip1999) }}</td><td>{{ no_data(journal.sjr1999) }}</td><td>{{ no_data(journal.ipp1999) }}</td></tr>
+    </table>
+{% endset %}
+
+{% include 'base.tmpl' %}
