@@ -1,0 +1,10 @@
+url: "http://URL.com"
+defaultTitle: "Journals Overlap Database"
+development: true
+budgetEndpoint: "http://API-ENDPOINT-URL"
+temp: "/path/to/tmp/directory"
+database:
+    host: "localhost"
+    username: "USERNAME"
+    password: "PASSWORD"
+    database: "DATABASE NAME"
