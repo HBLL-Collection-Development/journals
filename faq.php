@@ -28,10 +28,10 @@ $html = <<<'HTML'
 <p>There are several reasons you might see &ldquo;No data&rdquo; listed in the table. Commonly, this is because of missing or incorrect ISSNs. Sometimes the data is simply not available. If there are zero uses, it will show &ldquo;0&rdquo; rather than &ldquo;No data&rdquo;.</p>
 
 <p><strong>What do the fund code averages mean?</strong></p>
-<p>The fund code averages are the average values for all titles within that one fund code. For price, this is the average of all non-zero, non-missing price data. This means that the average is higher than the actual average price. When using this number to calculate if an individual title is at or below average, this works out favorably for an individual title.</p>
+<p>The fund code averages are the average values for all titles within that one fund code. For price, this is the average of all non-zero, non-missing price data. This means that the average is higher than the actual average price. When using this number to calculate if an individual title is at or below average, this works out favorably for an individual title. All averages are based on the latest full-year of available data.</p>
 
 <p><strong>What do the red, yellow, and green colors mean?</strong></p>
-<p>Red means that the individual metric is poor compared to the average within that one fund code. Yellow means it is within 15% of the average within that one fund code. Green means that is compares favorably to the average title within that one fund code. No color means there is no data to make a comparison to the average.</p>
+<p>Red means that the individual metric is 15%, or more, worse than the average within that one fund code. Yellow means it is within 15% of the average. Green means that is 15%, or more, favorable than the average. No color means there is no data to make a comparison to the average.</p>
 HTML;
 
 new \Journals\Twig('base.tmpl', array('title' => 'FAQs', 'content' => $html));

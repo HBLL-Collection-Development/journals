@@ -62,11 +62,12 @@ namespace Journals;
 
          // Custom function to sort when there is no data
          $sort_number = new \Twig_SimpleFunction('sort_number', function ($number) {
-             $number = preg_replace('/\D/', '', $number);
+             $number = str_replace(',', '', trim(trim($number), '$'));
+             $number = filter_var($number, FILTER_VALIDATE_FLOAT);
              if ($number == '') {
                  echo '-';
              } else {
-                 echo trim($number, '$');
+                 echo $number;
              }
          });
 
@@ -74,7 +75,8 @@ namespace Journals;
 
          // Custom function to determine if a number is at, below, or above average
          $average_class = new \Twig_SimpleFunction('average_class', function ($number, $average, $above = 'good') {
-             $number = preg_replace('/\D/', '', $number);
+             $number = str_replace(',', '', trim(trim($number), '$'));
+             $number = filter_var($number, FILTER_VALIDATE_FLOAT);
              if ($number != '') {
                  $min = $average - ($average * .15);
                  $max = $average + ($average * .15);
