@@ -1076,12 +1076,8 @@ section td:not(:last-child) {
 }
 
 section tr:hover {
-    background-color: #3f3f3f;
-    color: #F5F5F5
-}
-
-section tr:hover a {
-    color: #ccc
+    background-color: #999;
+    color: #3f3f3f
 }
 
 section th {
@@ -1446,4 +1442,16 @@ table.dataTable thead .sorting_asc_disabled {
 
 table.dataTable thead .sorting_desc_disabled {
     background-image: url("https://cdn.datatables.net/1.10.12/images/sort_desc_disabled.png")
+}
+
+.green {
+    background-color: rgb(185, 219, 174);
+}
+
+.yellow {
+    background-color: rgb(237, 225, 185);
+}
+
+.red {
+    background-color: rgb(216, 172, 181);
 }

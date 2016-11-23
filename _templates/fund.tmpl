@@ -90,12 +90,12 @@
 
             <tr>
                 <td data-order="{{ journal.sfxSortableTitle|trim }}"><a href="journal.php?titleControl={{ journal.titleControl }}">{{ journal.sfxTitle|trim }}</a>{{ issn }}</td>
-                <td data-order="{{ sort_number(price) }}">{{ price|trim }}</td>
+                <td data-order="{{ sort_number(price) }}" class="{{ average_class(price, averagePrice, 'bad') }}">{{ price|trim }}</td>
                 <td>{{ platforms }}</td>
-                <td data-order="{{ sort_number(usageLatest) }}">{{ usageLatest }}</td>
-                <td data-order="{{ sort_number(usageLastYear) }}">{{ usageLastYear }}</td>
-                <td data-order="{{ sort_number(hIndex) }}">{{ hIndex}}</td>
-                <td data-order="{{ sort_number(ipp) }}">{{ ipp }}</td></tr>
+                <td data-order="{{ sort_number(usageLatest) }}" class="{{ average_class(usageLatest, averageUse) }}">{{ usageLatest }}</td>
+                <td data-order="{{ sort_number(usageLastYear) }}" class="{{ average_class(usageLastYear, averageUse) }}">{{ usageLastYear }}</td>
+                <td data-order="{{ sort_number(hIndex) }}" class="{{ average_class(hIndex, averageHIndex) }}">{{ hIndex}}</td>
+                <td data-order="{{ sort_number(ipp) }}" class="{{ average_class(ipp, averageIpp) }}">{{ ipp }}</td></tr>
         {% endfor %}
         </tbody>
     </table>

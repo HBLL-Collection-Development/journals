@@ -62,8 +62,8 @@ namespace Journals;
 
          // Custom function to sort when there is no data
          $sort_number = new \Twig_SimpleFunction('sort_number', function ($number) {
-             $number = trim($number);
-             if ($number == 'No data') {
+             $number = preg_replace('/\D/', '', $number);
+             if ($number == '') {
                  echo '-';
              } else {
                  echo trim($number, '$');
@@ -71,6 +71,26 @@ namespace Journals;
          });
 
          $twig->addFunction($sort_number);
+
+         // Custom function to determine if a number is at, below, or above average
+         $average_class = new \Twig_SimpleFunction('average_class', function ($number, $average, $above = 'good') {
+             $number = preg_replace('/\D/', '', $number);
+             if ($number != '') {
+                 $min = $average - ($average * .15);
+                 $max = $average + ($average * .15);
+                 if ($number < $min) {
+                     echo $above == 'good' ? 'red' : 'green';
+                 } elseif ($number > $max) {
+                     echo $above == 'good' ? 'green' : 'red';
+                 } else {
+                     echo 'yellow';
+                 }
+             } else {
+                 return 'noData';
+             }
+         });
+
+         $twig->addFunction($average_class);
 
          $twig->display($template, $content);
      }
