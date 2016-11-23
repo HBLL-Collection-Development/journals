@@ -3,11 +3,23 @@
 {% set content %}
     <h1>Fund Codes</h1>
 
-    <ul>
-    {% for fund in funds %}
-        <li><a href="fund.php?fund={{ fund.subAccount }}">{{ fund.subAccount }}</a></li>
-    {% endfor %}
-    </ul>
+    <table id="table">
+        <thead>
+            <tr><th>Fund Code</th><th>Librarian</th><th>Subject</th></tr>
+        </thead>
+        <tfoot>
+            <tr><th>Fund Code</th><th>Librarian</th><th>Subject</th></tr>
+        </tfoot>
+        <tbody>
+            {% for fundCode, fund in funds %}
+                <tr>
+                    <td><a href="fund.php?fund={{ fundCode }}">{{ fundCode }}</a></td>
+                    <td>{{ fund.librarians }}</td>
+                    <td><a href="fund.php?fund={{ fundCode }}">{{ fund.fundName }}</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endset %}
 
 {% include 'base.tmpl' %}

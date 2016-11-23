@@ -60,6 +60,18 @@ namespace Journals;
 
          $twig->addFunction($no_data);
 
+         // Custom function to sort when there is no data
+         $sort_number = new \Twig_SimpleFunction('sort_number', function ($number) {
+             $number = trim($number);
+             if ($number == 'No data') {
+                 echo '-';
+             } else {
+                 echo trim($number, '$');
+             }
+         });
+
+         $twig->addFunction($sort_number);
+
          $twig->display($template, $content);
      }
  }

@@ -7,6 +7,16 @@
     <title>{{ title }}</title>
     <link rel="stylesheet" type="text/css" href="{{ url }}/assets/styles/styles.css" media="screen">
     <meta name="mobile-web-app-capable" content="yes">
+    <script type="text/javascript" src="//code.jquery.com/jquery-latest.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#table').DataTable( {
+                "paging": false,
+                "info": false
+            } );
+        } );
+    </script>
 </head>
 
 <body>

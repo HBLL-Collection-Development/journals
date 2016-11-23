@@ -2,21 +2,27 @@
 
 {% set content %}
     <h1>Fund Code {{ fund }}</h1>
-    <table>
-        <tr><th>Title</th><th>Price</th><th>Platforms</th><th>2016 YTD Use</th><th>2015 Use</th><th>h-index</th><th>IPP</th></tr>
+    <table id="table">
+        <thead>
+            <tr><th>Title</th><th>Price</th><th data-orderable="false">Platforms</th><th>2016 YTD Use</th><th>2015 Use</th><th>h-index</th><th>IPP</th></tr>
+        </thead>
+        <tfoot>
+            <tr><th>Title</th><th>Price</th><th>Platforms</th><th>2016 YTD Use</th><th>2015 Use</th><th>h-index</th><th>IPP</th></tr>
+        </tfoot>
+        <tbody>
         {% for journal in journals %}
 
             {% set issn %}
                 {% if journal.sfxIssn and journal.sfxEIssn %}
                     {% set formattedIssn = journal.sfxIssn|split('', 4) %}
                     {% set formattedEIssn = journal.sfxEIssn|split('', 4) %}
-                    ISSN {{ formattedIssn.0 }}-{{ formattedIssn.1 }} <br/>eISSN {{ formattedEIssn.0 }}-{{ formattedEIssn.1 }}
+                    <br/>ISSN {{ formattedIssn.0 }}-{{ formattedIssn.1 }} <br/>eISSN {{ formattedEIssn.0 }}-{{ formattedEIssn.1 }}
                 {% elseif journal.sfxIssn %}
                     {% set formattedIssn = journal.sfxIssn|split('', 4) %}
-                    ISSN {{ formattedIssn.0 }}-{{ formattedIssn.1 }}
+                    <br/>ISSN {{ formattedIssn.0 }}-{{ formattedIssn.1 }}
                 {% elseif journal.sfxEIssn %}
                     {% set formattedEIssn = journal.sfxEIssn|split('', 4) %}
-                    eISSN {{ formattedEIssn.0 }}-{{ formattedEIssn.1 }}
+                    <br/>eISSN {{ formattedEIssn.0 }}-{{ formattedEIssn.1 }}
                 {% endif %}
             {% endset %}
 
@@ -74,8 +80,16 @@
                 {% endif %}
             {% endset %}
 
-            <tr><td><a href="journal.php?titleControl={{ journal.titleControl }}">{{ journal.sfxTitle }}</a><br>{{ issn }}</td><td>{{ price }}</td><td>{{ platforms }}</td><td>{{ usageLatest }}</td><td>{{ usageLastYear }}</td><td>{{ hIndex }}</td><td>{{ ipp }}</td></tr>
+            <tr>
+                <td data-order="{{ journal.sfxSortableTitle|trim }}"><a href="journal.php?titleControl={{ journal.titleControl }}">{{ journal.sfxTitle|trim }}</a>{{ issn }}</td>
+                <td data-order="{{ sort_number(price) }}">{{ price|trim }}</td>
+                <td>{{ platforms }}</td>
+                <td data-order="{{ sort_number(usageLatest) }}">{{ usageLatest }}</td>
+                <td data-order="{{ sort_number(usageLastYear) }}">{{ usageLastYear }}</td>
+                <td data-order="{{ sort_number(hIndex) }}">{{ hIndex}}</td>
+                <td data-order="{{ sort_number(ipp) }}">{{ ipp }}</td></tr>
         {% endfor %}
+        </tbody>
     </table>
 {% endset %}
 
