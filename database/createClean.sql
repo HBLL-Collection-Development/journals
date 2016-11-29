@@ -56,7 +56,7 @@ SELECT DISTINCT
 	`sfxJournals`.`objectId`,
     `sfxJournals`.`sortableTitle` AS `sfxSortableTitle`,
     `sfxJournals`.`title` AS `sfxTitle`,
-	`sfxJournals`.`issn` AS `sfxIssn`,
+	IFNULL(`sfxJournals`.`issn`, `rawWorkflows`.`issn`) AS `sfxIssn`,
 	`sfxJournals`.`eIssn` AS `sfxEIssn`,
 	`sfxJournals`.`lccn`
 FROM `rawWorkflows`
