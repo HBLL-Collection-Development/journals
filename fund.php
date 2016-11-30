@@ -5,6 +5,8 @@ require_once 'vendor/autoload.php';
 $configs = \Journals\Config::get();
 
 $fund = filter_var($_REQUEST['fund'], FILTER_SANITIZE_STRING);
+$fundName = filter_var($_REQUEST['fundName'], FILTER_SANITIZE_STRING);
+$librarians = filter_var($_REQUEST['librarians'], FILTER_SANITIZE_STRING);
 
 $db = new Database\Database($configs['database']['host'], $configs['database']['username'], $configs['database']['password'], $configs['database']['database']);
 // Journal list
@@ -38,4 +40,4 @@ $averageIpp = $db->single();
 $averageIpp = $averageIpp['averageIpp'];
 $db = null;
 
-new \Journals\Twig('fund.tmpl', array('fund' => $fund, 'numTitles' => $numTitles, 'averagePrice' => $averagePrice, 'averageUse' => $averageUse, 'averageHIndex' => $averageHIndex, 'averageIpp' => $averageIpp, 'journals' => $journals));
+new \Journals\Twig('fund.tmpl', array('fund' => $fund, 'fundName' => $fundName, 'librarians' => $librarians, 'numTitles' => $numTitles, 'averagePrice' => $averagePrice, 'averageUse' => $averageUse, 'averageHIndex' => $averageHIndex, 'averageIpp' => $averageIpp, 'journals' => $journals));

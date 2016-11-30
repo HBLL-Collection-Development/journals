@@ -1,7 +1,7 @@
 {% set title = [fund, ' Fund Code']|join %}
 
 {% set content %}
-    <h1>Fund Code {{ fund }}</h1>
+    <h1>{{ fundName }} ({{ fund }})<br/>{{ librarians }}</h1>
     <table>
         <tr><th colspan="2">Fund Code Statistics</th></tr>
         <tr><td>Number of journals</td><td>{{ format_number(numTitles) }}</td></tr>

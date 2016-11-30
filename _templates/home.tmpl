@@ -14,9 +14,9 @@
         <tbody>
             {% for fundCode, fund in funds %}
                 <tr>
-                    <td><a href="fund.php?fund={{ fundCode }}">{{ fundCode }}</a></td>
+                    <td><a href="fund.php?fund={{ fundCode }}&amp;fundName={{ fund.fundName }}&amp;librarians={{ fund.librarians }}">{{ fundCode }}</a></td>
                     <td>{{ fund.librarians }}</td>
-                    <td><a href="fund.php?fund={{ fundCode }}">{{ fund.fundName }}</a></td>
+                    <td><a href="fund.php?fund={{ fundCode }}&amp;fundName={{ fund.fundName }}&amp;librarians={{ fund.librarians }}">{{ fund.fundName }}</a></td>
                 </tr>
             {% endfor %}
         </tbody>
