@@ -5,6 +5,7 @@
     <table>
         <tr><th colspan="2">Fund Code Statistics</th></tr>
         <tr><td>Number of journals</td><td>{{ format_number(numTitles) }}</td></tr>
+        <tr><td>Total spend</td><td>${{ format_number(totalSpend) }}</td></tr>
         <tr><td>Average cost</td><td>${{ format_number(averagePrice) }}</td></tr>
         <tr><td>Average use</td><td>{{ format_number(averageUse) }}</td></tr>
         <tr><td>Average h-index</td><td>{{ no_data(averageHIndex) }}</td></tr>
