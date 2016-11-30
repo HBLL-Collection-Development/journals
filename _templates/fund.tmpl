@@ -25,15 +25,18 @@
                 {% if journal.sfxIssn and journal.sfxEIssn %}
                     {% set formattedIssn = journal.sfxIssn|split('', 4) %}
                     {% set formattedEIssn = journal.sfxEIssn|split('', 4) %}
-                    <br/><a href="http://catalog.lib.byu.edu/uhtbin/cgisirsi/X/0/0/5/?user_id=WEBSERVER&new_gateway_db=ILINK&searchdata1={{ formattedIssn.0 }}-{{ formattedIssn.1 }}">[Catalog]</a> | <a href="http://sfx.lib.byu.edu/sfxlcl3?ctx_ver=Z39.88-2004&ctx_enc=info:ofi/enc:UTF-8&url_ver=Z39.88-2004&url_ctx_fmt=infofi/fmt:kev:mtx:ctx&amp;rft.issn={{ formattedIssn.0 }}-{{ formattedIssn.1 }}&amp;rft.jtitle={{ journal.sfxTitle|trim|url_encode }}.&amp;rft.genre=article&amp;rfr_id=info:sid/sfxit.com:citation">[SFX]</a>
+                    <br/><a href="http://catalog.lib.byu.edu/uhtbin/cgisirsi/X/0/0/5/?user_id=WEBSERVER&new_gateway_db=ILINK&searchdata1={{ journal.titleControl }}">[Catalog]</a> | <a href="http://sfx.lib.byu.edu/sfxlcl3?ctx_ver=Z39.88-2004&ctx_enc=info:ofi/enc:UTF-8&url_ver=Z39.88-2004&url_ctx_fmt=infofi/fmt:kev:mtx:ctx&amp;rft.issn={{ formattedIssn.0 }}-{{ formattedIssn.1 }}&amp;rft.jtitle={{ journal.sfxTitle|trim|url_encode }}.&amp;rft.genre=article&amp;rfr_id=info:sid/sfxit.com:citation">[SFX]</a>
                     <br/>ISSN {{ formattedIssn.0 }}-{{ formattedIssn.1 }} <br/>eISSN {{ formattedEIssn.0 }}-{{ formattedEIssn.1 }}
                 {% elseif journal.sfxIssn %}
                     {% set formattedIssn = journal.sfxIssn|split('', 4) %}
-                    <br/><a href="http://catalog.lib.byu.edu/uhtbin/cgisirsi/X/0/0/5/?user_id=WEBSERVER&new_gateway_db=ILINK&searchdata1={{ formattedIssn.0 }}-{{ formattedIssn.1 }}">[Catalog]</a> | <a href="http://sfx.lib.byu.edu/sfxlcl3?ctx_ver=Z39.88-2004&ctx_enc=info:ofi/enc:UTF-8&url_ver=Z39.88-2004&url_ctx_fmt=infofi/fmt:kev:mtx:ctx&amp;rft.issn={{ formattedIssn.0 }}-{{ formattedIssn.1 }}&amp;rft.jtitle={{ journal.sfxTitle|trim|url_encode }}.&amp;rft.genre=article&amp;rfr_id=info:sid/sfxit.com:citation">[SFX]</a>
+                    <br/><a href="http://catalog.lib.byu.edu/uhtbin/cgisirsi/X/0/0/5/?user_id=WEBSERVER&new_gateway_db=ILINK&searchdata1={{ journal.titleControl }}">[Catalog]</a> | <a href="http://sfx.lib.byu.edu/sfxlcl3?ctx_ver=Z39.88-2004&ctx_enc=info:ofi/enc:UTF-8&url_ver=Z39.88-2004&url_ctx_fmt=infofi/fmt:kev:mtx:ctx&amp;rft.issn={{ formattedIssn.0 }}-{{ formattedIssn.1 }}&amp;rft.jtitle={{ journal.sfxTitle|trim|url_encode }}.&amp;rft.genre=article&amp;rfr_id=info:sid/sfxit.com:citation">[SFX]</a>
                     <br/>ISSN {{ formattedIssn.0 }}-{{ formattedIssn.1 }}
                 {% elseif journal.sfxEIssn %}
                     {% set formattedEIssn = journal.sfxEIssn|split('', 4) %}
+                    <br/><a href="http://catalog.lib.byu.edu/uhtbin/cgisirsi/X/0/0/5/?user_id=WEBSERVER&new_gateway_db=ILINK&searchdata1={{ journal.titleControl }}">[Catalog]</a> | <a href="http://sfx.lib.byu.edu/sfxlcl3?ctx_ver=Z39.88-2004&ctx_enc=info:ofi/enc:UTF-8&url_ver=Z39.88-2004&url_ctx_fmt=infofi/fmt:kev:mtx:ctx&amp;rft.issn={{ formattedEIssn.0 }}-{{ formattedEIssn.1 }}&amp;rft.jtitle={{ journal.sfxTitle|trim|url_encode }}.&amp;rft.genre=article&amp;rfr_id=info:sid/sfxit.com:citation">[SFX]</a>
                     <br/>eISSN {{ formattedEIssn.0 }}-{{ formattedEIssn.1 }}
+                {% else %}
+                    <br/><a href="http://catalog.lib.byu.edu/uhtbin/cgisirsi/X/0/0/5/?user_id=WEBSERVER&new_gateway_db=ILINK&searchdata1={{ journal.titleControl }}">[Catalog]</a>
                 {% endif %}
             {% endset %}
 
