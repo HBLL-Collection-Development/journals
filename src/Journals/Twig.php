@@ -73,6 +73,20 @@ namespace Journals;
 
          $twig->addFunction($sort_number);
 
+         // Custom function to identify type of accounts
+         $account_type = new \Twig_SimpleFunction('account_type', function ($account) {
+             $account = substr($account, 0, 12);
+             if ($account == '113900141640') {
+                 echo 'Print asset';
+             } elseif ($account == '113900151640') {
+                 echo 'Online asset';
+             } elseif ($account == '113900156251') {
+                 echo 'Online expense';
+             }
+         });
+
+         $twig->addFunction($account_type);
+
          // Custom function to determine if a number is at, below, or above average
          $average_class = new \Twig_SimpleFunction('average_class', function ($number, $average, $above = 'good') {
              $number = str_replace(',', '', trim(trim($number), '$'));

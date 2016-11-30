@@ -32,6 +32,9 @@ $html = <<<'HTML'
 
 <p><strong>What do the red, yellow, and green colors mean?</strong></p>
 <p>Red means that the individual metric is 15%, or more, worse than the average within that one fund code. Yellow means it is within 15% of the average. Green means that is 15%, or more, favorable than the average. No color means there is no data to make a comparison to the average.</p>
+
+<p><strong>What does the type column mean?</strong></p>
+<p>There are three categories of journals: print assets, online assets, and online expenses. In general, print and online assets are titles we have perpetual access to. Online expenses are titles we get because we have a package but we do not have perpetual access to them.</p>
 HTML;
 
 new \Journals\Twig('base.tmpl', array('title' => 'FAQs', 'content' => $html));

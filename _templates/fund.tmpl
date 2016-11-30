@@ -13,10 +13,10 @@
     <h3><a href="export.php?fund={{ fund }}">Export [.csv]</a></h3>
     <table id="table">
         <thead>
-            <tr><th>Title</th><th>Price</th><th data-orderable="false">Platforms</th><th>2016 YTD Use</th><th>2015 Use</th><th>h-index</th><th>IPP</th></tr>
+            <tr><th>Title</th><th>Type</th><th>Price</th><th data-orderable="false">Platforms</th><th>2016 YTD Use</th><th>2015 Use</th><th>h-index</th><th>IPP</th></tr>
         </thead>
         <tfoot>
-            <tr><th>Title</th><th>Price</th><th>Platforms</th><th>2016 YTD Use</th><th>2015 Use</th><th>h-index</th><th>IPP</th></tr>
+            <tr><th>Title</th><th>Type</th><th>Price</th><th>Platforms</th><th>2016 YTD Use</th><th>2015 Use</th><th>h-index</th><th>IPP</th></tr>
         </tfoot>
         <tbody>
         {% for journal in journals %}
@@ -93,6 +93,7 @@
 
             <tr>
                 <td data-order="{{ journal.sfxSortableTitle|trim }}"><a href="journal.php?titleControl={{ journal.titleControl }}">{{ journal.sfxTitle|trim }}</a>{{ issn }}</td>
+                <td>{{ account_type(journal.account) }}</td>
                 <td data-order="{{ sort_number(price) }}" class="{{ average_class(price, averagePrice, 'bad') }}">{{ price|trim }}</td>
                 <td>{{ platforms }}</td>
                 <td data-order="{{ sort_number(usageLatest) }}" class="{{ average_class(usageLatest, averageUse) }}">{{ usageLatest }}</td>
