@@ -34,7 +34,7 @@ $html = <<<'HTML'
 <p>Red means that the individual metric is 15%, or more, worse than the average within that one fund code. Yellow means it is within 15% of the average. Green means that is 15%, or more, favorable than the average. No color means there is no data to make a comparison to the average.</p>
 
 <p><strong>What does the type column mean?</strong></p>
-<p>There are three categories of journals: print assets, online assets, and online expenses. In general, print and online assets are titles we have perpetual access to. Online expenses are titles we get because we have a package but we do not have perpetual access to them.</p>
+<p>There are three categories of journals: print assets, online assets, and online expenses. In general, print and online assets are titles we have perpetual access to. Online expenses are titles we get because we have a package but we do not have perpetual access to them. When exporting to .csv format, you can determine the type by the account code. Account codes that begin &lsquo;113900141640XXXXX&rsquo; are print assets, &lsquo;113900151640XXXXX&rsquo; are online assets, and &lsquo;113900156251XXXXX&rsquo; are online expenses.</p>
 HTML;
 
 new \Journals\Twig('base.tmpl', array('title' => 'FAQs', 'content' => $html));
