@@ -11,10 +11,12 @@ $db->query('SELECT * FROM `journals` WHERE `titleControl` = :titleControl GROUP 
 $db->bind('titleControl', $titleControl);
 $journal = $db->single();
 
-$issn = $journal['issn'];
+$issn = $journal['sfxIssn'];
+$eIssn = $journal['sfxEIssn'];
 
-$db->query('SELECT `total`, `year`, `platform` FROM `USAGE` WHERE `issn` = :issn OR `eIssn` = :issn ORDER BY `platform`, `year`');
+$db->query('SELECT SUM(`total`) AS `total`, `year`, `platform` FROM `usage` WHERE `issn` = :issn OR `issn` = :eIssn OR `eIssn` = :issn OR `eIssn` = :eIssn  GROUP BY `platform`, `year` ORDER BY `platform`, `year`');
 $db->bind('issn', $issn);
+$db->bind('eIssn', $eIssn);
 $usage = $db->resultSet();
 
 $db->query('SELECT MIN(`year`) AS `min`, MAX(`year`) AS `max` FROM `USAGE` WHERE `issn` = :issn OR `eIssn` = :issn');
