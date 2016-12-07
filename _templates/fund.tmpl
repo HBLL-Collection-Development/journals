@@ -42,7 +42,7 @@
             {% endset %}
 
             {% set price %}
-                {% if journal.price2016 > 0 %}
+                {% if journal.price2016 > 0 and journal.price2016 > journal.price2015 %}
                     ${{ journal.price2016|number_format }}
                 {% elseif journal.price2015 > 0 %}
                     ${{ journal.price2015|number_format }}
