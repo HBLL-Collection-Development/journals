@@ -70,14 +70,17 @@
 
 {% set content %}
     <h1>{{ journal.sfxTitle }}</h1>
+    <h3>{{ fundName }} ({{ fund }}) {{ librarians }}</h3>
     <h2>{{ issn }}</h2>
     <h3>BYU Usage</h3>
 
     <table>
         <tr><th>Platform</th>
-            {% for i in range.min..range.max %}
-                <th>{{ i }}</th>
-            {% endfor %}
+            {% if range.min is not null %}
+                {% for i in range.min..range.max %}
+                    <th>{{ i }}</th>
+                {% endfor %}
+            {% endif %}
         </tr>
         {% set usePlatform = usage.0.platform %}
         <tr><td>{{ usePlatform }}</td>

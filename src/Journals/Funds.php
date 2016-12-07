@@ -30,7 +30,7 @@ namespace Journals;
          $this->fundCodeKeys = array_column($this->response, 'fund_code');
      }
 
-     public function getLibrarians($fundCode, $separator = ' & ')
+     public function getLibrarians($fundCode, $separator = ' and ')
      {
          $key = array_search($fundCode, $this->fundCodeKeys);
          $librarians = null;

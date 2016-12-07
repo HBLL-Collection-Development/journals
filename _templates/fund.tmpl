@@ -95,8 +95,16 @@
                 {% endif %}
             {% endset %}
 
+            {% set journalTitle %}
+                {% if journal.usage2016 is null and journal.2015 is null and journal.hIndex is null and journal.ipp is null %}
+                    {{ journal.sfxTitle|trim }}
+                {% else %}
+                    <a href="journal.php?titleControl={{ journal.titleControl }}&amp;fund={{ fund }}&amp;fundName={{ fundName }}&amp;librarians={{ librarians }}">{{ journal.sfxTitle|trim }}</a>
+                {% endif %}
+            {% endset %}
+
             <tr>
-                <td data-order="{{ journal.sfxSortableTitle|trim }}"><a href="journal.php?titleControl={{ journal.titleControl }}">{{ journal.sfxTitle|trim }}</a>{{ issn }}</td>
+                <td data-order="{{ journal.sfxSortableTitle|trim }}">{{ journalTitle }}{{ issn }}</td>
                 <td>{{ account_type(journal.account) }}</td>
                 <td data-order="{{ sort_number(price) }}" class="{{ average_class(price, averagePrice, 'bad') }}">{{ price|trim }}</td>
                 <td>{{ platforms }}</td>
