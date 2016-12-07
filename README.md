@@ -5,7 +5,8 @@
 ## Required Data Tables
 
 1. `rawScimago`: [Scimago Journal & Country Rank](http://www.scimagojr.com/journalrank.php?out=xls)
-  1. `rank`
+  1. Fields
+    1. `rank`
     2. `title`
     3. `type`
     4. `issn`
@@ -21,6 +22,7 @@
     14. `refsPerDoc`
     15. `country`
 2. `rawSfx`: Two files
+  1. Fields
     1. `sortableTitle`
     2. `title`
     3. `titleNonFilingCharacter`
@@ -65,6 +67,7 @@
     42. `parseParam`
     43. `isFree`
 3. `rawSnip`: [journalmetrics.com](https://www.journalmetrics.com/values.php)
+  1. Fields
     1. `sourceRecordId`
     2. `sourceTitle`
     3. `issn`
@@ -156,6 +159,7 @@
     89. `healthProfessions`
     90. `asjc`
 4. `rawUsage`
+  1. Fields
     1. `title`
     2. `publisher`
     3. `platform`
@@ -180,6 +184,7 @@
     22. `dec`
     23. `year`
 5. `rawWorkflows`: Report from Lee Richards
+  1. Fields
     1. `account`
     2. `subAccount`
     3. `title`
@@ -195,9 +200,11 @@
 ## Optional Data Tables
 
 1. `rawAsjc`: [Scopus Sources](https://www.elsevier.com/solutions/scopus/content)
+  1. Fields
     1. `description`
     2. `code`
 2. `rawConferenceProceedings`: [Scopus Sources](https://www.elsevier.com/solutions/scopus/content)
+  1. Fields
     1. `sourceRecordId`
     2. `sourceTitle`
     3. `coverage`
@@ -214,12 +221,14 @@
     14. `sjr2015`
     15. `asjc`
 3. `rawConferenceProceedingsBackfiles`: [Scopus Sources](https://www.elsevier.com/solutions/scopus/content)
+  1. Fields
     1. `sourceRecordId`
     2. `sourceTitle`
     3. `coverage`
     4. `issn`
     5. `asjc`
 4. `rawScopusSources`: [Scopus Sources](https://www.elsevier.com/solutions/scopus/content)
+  1. Fields
     1. `sourceRecordId`
     2. `sourceTitle`
     3. `issn`
