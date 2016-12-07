@@ -5,7 +5,7 @@
 ## Required Data Tables
 
 1. `rawScimago`: [Scimago Journal & Country Rank](http://www.scimagojr.com/journalrank.php?out=xls)
-    1. `rank`
+  1. `rank`
     2. `title`
     3. `type`
     4. `issn`
