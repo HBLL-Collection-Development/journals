@@ -1,4 +1,4 @@
-# Journals Overlap Database (BETA)
+# Journals Overlap Database (ALPHA)
 
 # Data Sources
 
@@ -233,6 +233,7 @@
 3. `coverage`
 4. `issn`
 5. `asjc`
+
 ### 4. `rawScopusSources`: [Scopus Sources](https://www.elsevier.com/solutions/scopus/content)
 
 1. `sourceRecordId`
