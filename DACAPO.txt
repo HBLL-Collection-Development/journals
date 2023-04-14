@@ -1,0 +1,21 @@
+https://search.lib.byu.edu/dacapo/statistics
+    ?itemId=3119723167292
+    &itemId=31197...
+    &timestampStart=2016-01-18
+    &timestampEnd=2017-01-18
+    &action=charge // check-outs / AuxStor
+    &action=use_item // in-house
+    &aggregation=monthly OR yearly OR daily
+
+
+    16% staff usage on average
+
+https://search.lib.byu.edu/dacapo/item
+    /{ITEM-ID}
+    ?currentItemId=31197...
+
+    ?catalogKey=2554791
+
+
+
+    catKey

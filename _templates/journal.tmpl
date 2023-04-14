@@ -72,34 +72,35 @@
     <h1>{{ journal.sfxTitle }}</h1>
     <h3>{{ fundName }} ({{ fund }}) {{ librarians }}</h3>
     <h2>{{ issn }}</h2>
-    <h3>BYU Usage</h3>
-
-    <table>
-        <tr><th>Platform</th>
-            {% if range.min is not null %}
-                {% for i in range.min..range.max %}
-                    <th>{{ i }}</th>
-                {% endfor %}
-            {% endif %}
-        </tr>
-        {% set usePlatform = usage.0.platform %}
-        <tr><td>{{ usePlatform }}</td>
-        {% for use in usage %}
-            {% if usePlatform != use.platform %}
-                {% set usePlatform = use.platform %}
-                </tr><tr><td>{{ usePlatform }}</td>
-                <td>{{ format_number(use.total) }}</td>
-            {% else %}
-                <td>{{ format_number(use.total) }}</td>
-            {% endif %}
-        {% endfor %}
-        </tr>
-        <tr><td><strong>TOTAL</strong></td>
-            {% for total in totals %}
-                <td><strong>{{ format_number(total.total) }}</strong></td>
+    {% if range.min > 0 %}
+        <h3>BYU Usage</h3>
+        <table>
+            <tr><th>Platform</th>
+                {% if range.min is not null %}
+                    {% for i in range.min..range.max %}
+                        <th>{{ i }}</th>
+                    {% endfor %}
+                {% endif %}
+            </tr>
+            {% set usePlatform = usage.0.platform %}
+            <tr><td>{{ usePlatform }}</td>
+            {% for use in usage %}
+                {% if usePlatform != use.platform %}
+                    {% set usePlatform = use.platform %}
+                    </tr><tr><td>{{ usePlatform }}</td>
+                    <td>{{ format_number(use.total) }}</td>
+                {% else %}
+                    <td>{{ format_number(use.total) }}</td>
+                {% endif %}
             {% endfor %}
-        </tr>
-    </table>
+            </tr>
+            <tr><td><strong>TOTAL</strong></td>
+                {% for total in totals %}
+                    <td><strong>{{ format_number(total.total) }}</strong></td>
+                {% endfor %}
+            </tr>
+        </table>
+    {% endif %}
 
     <h3>2015 Journal Bibliometrics</h3>
     <table>
@@ -118,26 +119,13 @@
     </table>
 
     <h3>Historical Journal Bibliometrics</h3>
-    <table>
-        <tr><th>Year</th><th>SNIP</th><th>SJR</th><th>IPP</th></tr>
-        <tr><td>2015</td><td>{{ no_data(journal.snip2015) }}</td><td>{{ no_data(journal.sjr2015) }}</td><td>{{ no_data(journal.ipp2015) }}</td></tr>
-        <tr><td>2014</td><td>{{ no_data(journal.snip2014) }}</td><td>{{ no_data(journal.sjr2014) }}</td><td>{{ no_data(journal.ipp2014) }}</td></tr>
-        <tr><td>2013</td><td>{{ no_data(journal.snip2013) }}</td><td>{{ no_data(journal.sjr2013) }}</td><td>{{ no_data(journal.ipp2013) }}</td></tr>
-        <tr><td>2012</td><td>{{ no_data(journal.snip2012) }}</td><td>{{ no_data(journal.sjr2012) }}</td><td>{{ no_data(journal.ipp2012) }}</td></tr>
-        <tr><td>2011</td><td>{{ no_data(journal.snip2011) }}</td><td>{{ no_data(journal.sjr2011) }}</td><td>{{ no_data(journal.ipp2011) }}</td></tr>
-        <tr><td>2010</td><td>{{ no_data(journal.snip2010) }}</td><td>{{ no_data(journal.sjr2010) }}</td><td>{{ no_data(journal.ipp2010) }}</td></tr>
-        <tr><td>2009</td><td>{{ no_data(journal.snip2009) }}</td><td>{{ no_data(journal.sjr2009) }}</td><td>{{ no_data(journal.ipp2009) }}</td></tr>
-        <tr><td>2008</td><td>{{ no_data(journal.snip2008) }}</td><td>{{ no_data(journal.sjr2008) }}</td><td>{{ no_data(journal.ipp2008) }}</td></tr>
-        <tr><td>2007</td><td>{{ no_data(journal.snip2007) }}</td><td>{{ no_data(journal.sjr2007) }}</td><td>{{ no_data(journal.ipp2007) }}</td></tr>
-        <tr><td>2006</td><td>{{ no_data(journal.snip2006) }}</td><td>{{ no_data(journal.sjr2006) }}</td><td>{{ no_data(journal.ipp2006) }}</td></tr>
-        <tr><td>2005</td><td>{{ no_data(journal.snip2005) }}</td><td>{{ no_data(journal.sjr2005) }}</td><td>{{ no_data(journal.ipp2005) }}</td></tr>
-        <tr><td>2004</td><td>{{ no_data(journal.snip2004) }}</td><td>{{ no_data(journal.sjr2004) }}</td><td>{{ no_data(journal.ipp2004) }}</td></tr>
-        <tr><td>2003</td><td>{{ no_data(journal.snip2003) }}</td><td>{{ no_data(journal.sjr2003) }}</td><td>{{ no_data(journal.ipp2003) }}</td></tr>
-        <tr><td>2002</td><td>{{ no_data(journal.snip2002) }}</td><td>{{ no_data(journal.sjr2002) }}</td><td>{{ no_data(journal.ipp2002) }}</td></tr>
-        <tr><td>2001</td><td>{{ no_data(journal.snip2001) }}</td><td>{{ no_data(journal.sjr2001) }}</td><td>{{ no_data(journal.ipp2001) }}</td></tr>
-        <tr><td>2000</td><td>{{ no_data(journal.snip2000) }}</td><td>{{ no_data(journal.sjr2000) }}</td><td>{{ no_data(journal.ipp2000) }}</td></tr>
-        <tr><td>1999</td><td>{{ no_data(journal.snip1999) }}</td><td>{{ no_data(journal.sjr1999) }}</td><td>{{ no_data(journal.ipp1999) }}</td></tr>
-    </table>
+    {% if scopus is not empty %}
+        <p><a href="http://www.scimagojr.com/journalsearch.php?q={{ scopus }}&amp;tip=sid&amp;exact=no"><img src="http://www.scimagojr.com/journal_img.php?id={{ scopus }}"/></a></p>
+    {% endif %}
+    <div id="snip"></div>
+    <div id="ipp"></div>
+    <div id="sjr"></div>
+
 {% endset %}
 
 {% include 'base.tmpl' %}

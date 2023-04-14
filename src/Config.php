@@ -6,12 +6,14 @@
   *
   * @version 2016-11-22
   *
-  * @since 2016-11-22
+  * @since 2023-04-14
   */
 
 namespace Journals;
 
 use Symfony\Component\Yaml\Yaml;
+
+ini_set('display_errors', 0);
 
 /**
   * Class to put content into a Twig template.
@@ -23,6 +25,6 @@ use Symfony\Component\Yaml\Yaml;
  {
      public static function get()
      {
-         return Yaml::parse(file_get_contents('./config.yml'));
+         return Yaml::parse(file_get_contents('../../configs/journals/config.yml'));
      }
  }

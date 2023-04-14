@@ -30,8 +30,13 @@ $html = <<<'HTML'
 <p><strong>What do the fund code averages mean?</strong></p>
 <p>The fund code averages are the average values for all titles within that one fund code. For price, this is the average of all non-zero, non-missing price data. This means that the average is higher than the actual average price. When using this number to calculate if an individual title is at or below average, this works out favorably for an individual title. All averages are based on the latest full-year of available data.</p>
 
-<p><strong>What do the red, yellow, and green colors mean?</strong></p>
-<p>Red means that the individual metric is 15%, or more, worse than the average within that one fund code. Yellow means it is within 15% of the average. Green means that is 15%, or more, favorable than the average. No color means there is no data to make a comparison to the average.</p>
+<p><strong>What do the <span class="red">red</span>, <span class="yellow">yellow</span>, and <span class="green">green</span> colors mean?</strong></p>
+<ul>
+<li><span class="red" title="red">Red</span>: The individual metric is 15%, or more, worse than the average within that one fund code.</li>
+<li><span class="yellow" title="yellow">Yellow</span>: The individual metric is within 15% of the average.</li>
+<li><span class="green" title="green">Green</span>: The individual metric is 15%, or more, favorable than the average.</li>
+<li>No color means there is no data to make a comparison to the average.</li>
+</ul>
 
 <p><strong>What does the type column mean?</strong></p>
 <p>There are three categories of journals: print assets, online assets, and online expenses. In general, print and online assets are titles we have perpetual access to. Online expenses are titles we get because we have a package but we do not have perpetual access to them. When exporting to .csv format, you can determine the type by the account code. Account codes that begin &lsquo;113900141640XXXXX&rsquo; are print assets, &lsquo;113900151640XXXXX&rsquo; are online assets, and &lsquo;113900156251XXXXX&rsquo; are online expenses.</p>

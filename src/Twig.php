@@ -4,7 +4,7 @@
   *
   * @author  Jared Howland <journals@jaredhowland.com>
   *
-  * @version 2016-11-22
+  * @version 2023-04-14
   *
   * @since 2016-11-22
   */
@@ -24,22 +24,15 @@ namespace Journals;
          $configs = Config::get();
          $content = array_merge($configs, $content);
 
-         \Twig_Autoloader::register();
-
-         $loader = new \Twig_Loader_Filesystem('./_templates');
+         $loader = new \Twig\Loader\FilesystemLoader('./_templates');
          if ($configs['development']) {
-             $twig = new \Twig_Environment($loader, array(
-                'debug' => true,
-            ));
-             $twig->addExtension(new \Twig_Extension_Debug());
+              $twig = new \Twig\Environment($loader, ['debug' => true]);
          } else {
-             $twig = new \Twig_Environment($loader, array(
-                'cache' => '_cache',
-            ));
+              $twig = new \Twig\Environment($loader, ['cache' => '_cache']);
          }
 
          // Custom function to format numbers
-         $format_number = new \Twig_SimpleFunction('format_number', function ($number) {
+         $format_number = new \Twig\TwigFunction('format_number', function ($number) {
              if (!is_null($number)) {
                  echo number_format($number);
              } else {
@@ -50,7 +43,7 @@ namespace Journals;
          $twig->addFunction($format_number);
 
          // Custom function to show `No data` when `null`
-         $no_data = new \Twig_SimpleFunction('no_data', function ($number) {
+         $no_data = new \Twig\TwigFunction('no_data', function ($number) {
              if (!is_null($number)) {
                  echo $number;
              } else {
@@ -61,7 +54,7 @@ namespace Journals;
          $twig->addFunction($no_data);
 
          // Custom function to sort when there is no data
-         $sort_number = new \Twig_SimpleFunction('sort_number', function ($number) {
+         $sort_number = new \Twig\TwigFunction('sort_number', function ($number) {
              $number = str_replace(',', '', trim(trim($number), '$'));
              $number = filter_var($number, FILTER_VALIDATE_FLOAT);
              if ($number == '') {
@@ -74,7 +67,7 @@ namespace Journals;
          $twig->addFunction($sort_number);
 
          // Custom function to identify type of accounts
-         $account_type = new \Twig_SimpleFunction('account_type', function ($account) {
+         $account_type = new \Twig\TwigFunction('account_type', function ($account) {
              $account = substr($account, 0, 12);
              if ($account == '113900141640') {
                  echo 'Print asset';
@@ -88,7 +81,7 @@ namespace Journals;
          $twig->addFunction($account_type);
 
          // Custom function to determine if a number is at, below, or above average
-         $average_class = new \Twig_SimpleFunction('average_class', function ($number, $average, $above = 'good') {
+         $average_class = new \Twig\TwigFunction('average_class', function ($number, $average, $above = 'good') {
              $number = str_replace(',', '', trim(trim($number), '$'));
              $number = filter_var($number, FILTER_VALIDATE_FLOAT);
              if ($number != '') {

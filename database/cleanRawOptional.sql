@@ -1,4 +1,4 @@
--- About 1–2 minutes to run
+-- About 3–5 minutes to run
 
 --
 -- ****** `rawAsjc` ******
@@ -10,6 +10,39 @@ UPDATE `rawAsjc` SET `code` = NULLIF(TRIM(`code`), '');
 -- Clean up empty values in `rawAsjc`
 UPDATE `rawAsjc` SET `description` = NULL WHERE `description` LIKE '';
 UPDATE `rawAsjc` SET `code` = NULL WHERE `code` LIKE '';
+
+--
+-- ****** `rawCwts` ******
+--
+
+-- Trim white space from cells in `rawCwts`
+UPDATE `rawCwts` SET `title` = (CASE WHEN (`title` = '' OR `title` = '-') THEN NULL ELSE `title` END);
+UPDATE `rawCwts` SET `type` = (CASE WHEN (`type` = '' OR `type` = '-') THEN NULL ELSE `type` END);
+UPDATE `rawCwts` SET `issn` = (CASE WHEN (`issn` = '' OR `issn` = '-') THEN NULL ELSE `issn` END);
+UPDATE `rawCwts` SET `eIssn` = (CASE WHEN (`eIssn` = '' OR `eIssn` = '-') THEN NULL ELSE `eIssn` END);
+UPDATE `rawCwts` SET `asjc` = (CASE WHEN (`asjc` = '' OR `asjc` = '-') THEN NULL ELSE `asjc` END);
+UPDATE `rawCwts` SET `year` = (CASE WHEN (`year` = '' OR `year` = '-') THEN NULL ELSE `year` END);
+UPDATE `rawCwts` SET `citingSource` = (CASE WHEN (`citingSource` = '' OR `citingSource` = '-') THEN NULL ELSE `citingSource` END);
+UPDATE `rawCwts` SET `pValue` = (CASE WHEN (`pValue` = '' OR `pValue` = '-') THEN NULL ELSE `pValue` END);
+UPDATE `rawCwts` SET `ipp` = (CASE WHEN (`ipp` = '' OR `ipp` = '-') THEN NULL ELSE `ipp` END);
+UPDATE `rawCwts` SET `ippLowerBound` = (CASE WHEN (`ippLowerBound` = '' OR `ippLowerBound` = '-') THEN NULL ELSE `ippLowerBound` END);
+UPDATE `rawCwts` SET `ippUpperBound` = (CASE WHEN (`ippUpperBound` = '' OR `ippUpperBound` = '-') THEN NULL ELSE `ippUpperBound` END);
+UPDATE `rawCwts` SET `snip` = (CASE WHEN (`snip` = '' OR `snip` = '-') THEN NULL ELSE `snip` END);
+UPDATE `rawCwts` SET `snipLowerBound` = (CASE WHEN (`snipLowerBound` = '' OR `snipLowerBound` = '-') THEN NULL ELSE `snipLowerBound` END);
+UPDATE `rawCwts` SET `snipUpperBound` = (CASE WHEN (`snipUpperBound` = '' OR `snipUpperBound` = '-') THEN NULL ELSE `snipUpperBound` END);
+UPDATE `rawCwts` SET `percentSelfCite` = (CASE WHEN (`percentSelfCite` = '' OR `percentSelfCite` = '-') THEN NULL ELSE `percentSelfCite` END);
+-- Clean up ASJC codes in `rawCwts`
+UPDATE `rawCwts` SET `asjc` = (REPLACE(`asjc`, ' ', ''));
+UPDATE `rawCwts` SET `asjc` = (REPLACE(`asjc`, ';', '|'));
+-- Clean up ISSNs in `rawCwts`
+UPDATE `rawCwts` SET `issn` = (REPLACE(`issn`, '-', ''));
+UPDATE `rawCwts` SET `issn` = UPPER(`issn`);
+UPDATE `rawCwts` SET `issn` = LPAD(`issn`, 8, '0');
+UPDATE `rawCwts` SET `eIssn` = (REPLACE(`eIssn`, '-', ''));
+UPDATE `rawCwts` SET `eIssn` = UPPER(`eIssn`);
+UPDATE `rawCwts` SET `eIssn` = LPAD(`eIssn`, 8, '0');
+-- Remove percent from `rawCwts`
+UPDATE `rawCwts` SET `percentSelfCite` = (REPLACE(`percentSelfCite`, '%', ''));
 
 --
 -- ****** `rawConferenceProceedings` ******
@@ -38,7 +71,6 @@ UPDATE `rawConferenceProceedings` SET `asjc` = (REPLACE(`asjc`, ';', '|'));
 UPDATE `rawConferenceProceedings` SET `issn` = (REPLACE(`issn`, '-', ''));
 UPDATE `rawConferenceProceedings` SET `issn` = UPPER(`issn`);
 UPDATE `rawConferenceProceedings` SET `issn` = LPAD(`issn`, 8, '0');
-ALTER TABLE `rawConferenceProceedings` CHANGE `issn` `issn` VARCHAR(8) NULL DEFAULT NULL;
 
 --
 -- ****** `rawConferenceProceedingsBackfiles` ******
@@ -57,82 +89,30 @@ UPDATE `rawConferenceProceedingsBackfiles` SET `asjc` = (REPLACE(`asjc`, ';', '|
 UPDATE `rawConferenceProceedingsBackfiles` SET `issn` = (REPLACE(`issn`, '-', ''));
 UPDATE `rawConferenceProceedingsBackfiles` SET `issn` = UPPER(`issn`);
 UPDATE `rawConferenceProceedingsBackfiles` SET `issn` = LPAD(`issn`, 8, '0');
-ALTER TABLE `rawConferenceProceedingsBackfiles` CHANGE `issn` `issn` VARCHAR(8) NULL DEFAULT NULL;
 
---
--- ****** `rawScopusSources` ******
---
-
--- Trim white space from cells in `rawScopusSources`
-UPDATE `rawScopusSources` SET `sourceRecordId` = NULLIF(TRIM(`sourceRecordId`), '');
-UPDATE `rawScopusSources` SET `sourceTitle` = NULLIF(TRIM(`sourceTitle`), '');
-UPDATE `rawScopusSources` SET `issn` = NULLIF(TRIM(`issn`), '');
-UPDATE `rawScopusSources` SET `eIssn` = NULLIF(TRIM(`eIssn`), '');
-UPDATE `rawScopusSources` SET `coverage` = NULLIF(TRIM(`coverage`), '');
-UPDATE `rawScopusSources` SET `status` = NULLIF(TRIM(`status`), '');
-UPDATE `rawScopusSources` SET `snip2013` = NULLIF(TRIM(`snip2013`), '');
-UPDATE `rawScopusSources` SET `ipp2013` = NULLIF(TRIM(`ipp2013`), '');
-UPDATE `rawScopusSources` SET `sjr2013` = NULLIF(TRIM(`sjr2013`), '');
-UPDATE `rawScopusSources` SET `snip2014` = NULLIF(TRIM(`snip2014`), '');
-UPDATE `rawScopusSources` SET `ipp2014` = NULLIF(TRIM(`ipp2014`), '');
-UPDATE `rawScopusSources` SET `sjr2014` = NULLIF(TRIM(`sjr2014`), '');
-UPDATE `rawScopusSources` SET `snip2015` = NULLIF(TRIM(`snip2015`), '');
-UPDATE `rawScopusSources` SET `ipp2015` = NULLIF(TRIM(`ipp2015`), '');
-UPDATE `rawScopusSources` SET `sjr2015` = NULLIF(TRIM(`sjr2015`), '');
-UPDATE `rawScopusSources` SET `medlineSourced` = NULLIF(TRIM(`medlineSourced`), '');
-UPDATE `rawScopusSources` SET `openAccess` = NULLIF(TRIM(`openAccess`), '');
-UPDATE `rawScopusSources` SET `articlesInPress` = NULLIF(TRIM(`articlesInPress`), '');
-UPDATE `rawScopusSources` SET `addedMay2016` = NULLIF(TRIM(`addedMay2016`), '');
-UPDATE `rawScopusSources` SET `sourceType` = NULLIF(TRIM(`sourceType`), '');
-UPDATE `rawScopusSources` SET `titleHistoryIndication` = NULLIF(TRIM(`titleHistoryIndication`), '');
-UPDATE `rawScopusSources` SET `relatedTitle1` = NULLIF(TRIM(`relatedTitle1`), '');
-UPDATE `rawScopusSources` SET `relatedTitle2` = NULLIF(TRIM(`relatedTitle2`), '');
-UPDATE `rawScopusSources` SET `relatedTitle3` = NULLIF(TRIM(`relatedTitle3`), '');
-UPDATE `rawScopusSources` SET `relatedTitle4` = NULLIF(TRIM(`relatedTitle4`), '');
-UPDATE `rawScopusSources` SET `publisher` = NULLIF(TRIM(`publisher`), '');
-UPDATE `rawScopusSources` SET `publisherImprints` = NULLIF(TRIM(`publisherImprints`), '');
-UPDATE `rawScopusSources` SET `publicationLocation` = NULLIF(TRIM(`publicationLocation`), '');
-UPDATE `rawScopusSources` SET `asjc` = NULLIF(TRIM(`asjc`), '');
-UPDATE `rawScopusSources` SET `topLevelLifeSciences` = NULLIF(TRIM(`topLevelLifeSciences`), '');
-UPDATE `rawScopusSources` SET `topLevelSocialSciences` = NULLIF(TRIM(`topLevelSocialSciences`), '');
-UPDATE `rawScopusSources` SET `topLevelPhysicalSciences` = NULLIF(TRIM(`topLevelPhysicalSciences`), '');
-UPDATE `rawScopusSources` SET `topLevelHealthSciences` = NULLIF(TRIM(`topLevelHealthSciences`), '');
-UPDATE `rawScopusSources` SET `general` = NULLIF(TRIM(`general`), '');
-UPDATE `rawScopusSources` SET `agriculturalBiologicalSciences` = NULLIF(TRIM(`agriculturalBiologicalSciences`), '');
-UPDATE `rawScopusSources` SET `artsHumanities` = NULLIF(TRIM(`artsHumanities`), '');
-UPDATE `rawScopusSources` SET `biochemistryGeneticsMolecularBiology` = NULLIF(TRIM(`biochemistryGeneticsMolecularBiology`), '');
-UPDATE `rawScopusSources` SET `businessManagementAccounting` = NULLIF(TRIM(`businessManagementAccounting`), '');
-UPDATE `rawScopusSources` SET `chemicalEngineering` = NULLIF(TRIM(`chemicalEngineering`), '');
-UPDATE `rawScopusSources` SET `chemistry` = NULLIF(TRIM(`chemistry`), '');
-UPDATE `rawScopusSources` SET `computerScience` = NULLIF(TRIM(`computerScience`), '');
-UPDATE `rawScopusSources` SET `decisionSciences` = NULLIF(TRIM(`decisionSciences`), '');
-UPDATE `rawScopusSources` SET `earthPlanetarySciences` = NULLIF(TRIM(`earthPlanetarySciences`), '');
-UPDATE `rawScopusSources` SET `economicsEconometricsFinance` = NULLIF(TRIM(`economicsEconometricsFinance`), '');
-UPDATE `rawScopusSources` SET `energy` = NULLIF(TRIM(`energy`), '');
-UPDATE `rawScopusSources` SET `engineering` = NULLIF(TRIM(`engineering`), '');
-UPDATE `rawScopusSources` SET `environmentalScience` = NULLIF(TRIM(`environmentalScience`), '');
-UPDATE `rawScopusSources` SET `immunologyMicrobiology` = NULLIF(TRIM(`immunologyMicrobiology`), '');
-UPDATE `rawScopusSources` SET `materialsScience` = NULLIF(TRIM(`materialsScience`), '');
-UPDATE `rawScopusSources` SET `mathematics` = NULLIF(TRIM(`mathematics`), '');
-UPDATE `rawScopusSources` SET `medicine` = NULLIF(TRIM(`medicine`), '');
-UPDATE `rawScopusSources` SET `neuroscience` = NULLIF(TRIM(`neuroscience`), '');
-UPDATE `rawScopusSources` SET `nursing` = NULLIF(TRIM(`nursing`), '');
-UPDATE `rawScopusSources` SET `pharmacologyToxicologyPharmaceutics` = NULLIF(TRIM(`pharmacologyToxicologyPharmaceutics`), '');
-UPDATE `rawScopusSources` SET `physicsAstronomy` = NULLIF(TRIM(`physicsAstronomy`), '');
-UPDATE `rawScopusSources` SET `psychology` = NULLIF(TRIM(`psychology`), '');
-UPDATE `rawScopusSources` SET `socialSciences` = NULLIF(TRIM(`socialSciences`), '');
-UPDATE `rawScopusSources` SET `veterinary` = NULLIF(TRIM(`veterinary`), '');
-UPDATE `rawScopusSources` SET `dentistry` = NULLIF(TRIM(`dentistry`), '');
-UPDATE `rawScopusSources` SET `healthProfessions` = NULLIF(TRIM(`healthProfessions`), '');
--- Clean up ASJC codes in `rawScopusSources`
-UPDATE `rawScopusSources` SET `asjc` = (REPLACE(`asjc`, ' ', ''));
-UPDATE `rawScopusSources` SET `asjc` = (REPLACE(`asjc`, ';', '|'));
--- Clean up ISSNs in `rawScopusSources`
-UPDATE `rawScopusSources` SET `issn` = (REPLACE(`issn`, '-', ''));
-UPDATE `rawScopusSources` SET `issn` = UPPER(`issn`);
-UPDATE `rawScopusSources` SET `issn` = LPAD(`issn`, 8, '0');
-UPDATE `rawScopusSources` SET `eIssn` = (REPLACE(`eIssn`, '-', ''));
-UPDATE `rawScopusSources` SET `eIssn` = UPPER(`eIssn`);
-UPDATE `rawScopusSources` SET `eIssn` = LPAD(`eIssn`, 8, '0');
-ALTER TABLE `rawScopusSources` CHANGE `issn` `issn` VARCHAR(8) NULL DEFAULT NULL;
-ALTER TABLE `rawScopusSources` CHANGE `eIssn` `eIssn` VARCHAR(8) NULL DEFAULT NULL;
+ALTER TABLE `rawAsjc` CHANGE `code` `code` int(11) DEFAULT NULL;
+ALTER TABLE `rawCwts` CHANGE `issn` `issn` varchar(8) DEFAULT NULL;
+ALTER TABLE `rawCwts` CHANGE `eIssn` `eIssn` varchar(8) DEFAULT NULL;
+ALTER TABLE `rawCwts` CHANGE `citingSource` `citingSource` tinyint(1) DEFAULT NULL;
+ALTER TABLE `rawCwts` CHANGE `pValue` `pValue` INT(11) DEFAULT NULL;
+ALTER TABLE `rawCwts` CHANGE `ipp` `ipp` decimal(10,2) DEFAULT NULL;
+ALTER TABLE `rawCwts` CHANGE `ippLowerBound` `ippLowerBound` decimal(10,2) DEFAULT NULL;
+ALTER TABLE `rawCwts` CHANGE `ippUpperBound` `ippUpperBound` decimal(10,2) DEFAULT NULL;
+ALTER TABLE `rawCwts` CHANGE `snip` `snip` decimal(10,2) DEFAULT NULL;
+ALTER TABLE `rawCwts` CHANGE `snipLowerBound` `snipLowerBound` decimal(10,2) DEFAULT NULL;
+ALTER TABLE `rawCwts` CHANGE `snipUpperBound` `snipUpperBound` decimal(10,2) DEFAULT NULL;
+ALTER TABLE `rawCwts` CHANGE `percentSelfCite` `percentSelfCite` decimal(10,1) DEFAULT NULL;
+ALTER TABLE `rawConferenceProceedings` CHANGE `sourceRecordId` `sourceRecordId` bigint(11) DEFAULT NULL;
+ALTER TABLE `rawConferenceProceedings` CHANGE `coverage` `coverage` int(11) DEFAULT NULL;
+ALTER TABLE `rawConferenceProceedings` CHANGE `issn` `issn` varchar(8) DEFAULT NULL;
+ALTER TABLE `rawConferenceProceedings` CHANGE `snip2013` `snip2013` decimal(10,3) DEFAULT NULL;
+ALTER TABLE `rawConferenceProceedings` CHANGE `ipp2013` `ipp2013` decimal(10,3) DEFAULT NULL;
+ALTER TABLE `rawConferenceProceedings` CHANGE `sjr2013` `sjr2013` decimal(10,3) DEFAULT NULL;
+ALTER TABLE `rawConferenceProceedings` CHANGE `snip2014` `snip2014` decimal(10,3) DEFAULT NULL;
+ALTER TABLE `rawConferenceProceedings` CHANGE `ipp2014` `ipp2014` decimal(10,3) DEFAULT NULL;
+ALTER TABLE `rawConferenceProceedings` CHANGE `sjr2014` `sjr2014` decimal(10,3) DEFAULT NULL;
+ALTER TABLE `rawConferenceProceedings` CHANGE `snip2015` `snip2015` decimal(10,3) DEFAULT NULL;
+ALTER TABLE `rawConferenceProceedings` CHANGE `ipp2015` `ipp2015` decimal(10,3) DEFAULT NULL;
+ALTER TABLE `rawConferenceProceedings` CHANGE `sjr2015` `sjr2015` decimal(10,3) DEFAULT NULL;
+ALTER TABLE `rawConferenceProceedingsBackfiles` CHANGE `sourceRecordId` `sourceRecordId` bigint(11) DEFAULT NULL;
+ALTER TABLE `rawConferenceProceedingsBackfiles` CHANGE `issn` `issn` varchar(8) DEFAULT NULL;

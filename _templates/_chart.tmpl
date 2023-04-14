@@ -1,0 +1,267 @@
+<!-- http://jsfiddle.net/gh/get/jquery/3.1.1/highslide-software/highcharts.com/tree/master/samples/highcharts/demo/arearange-line/ -->
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-more.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script type="text/javascript">
+
+$(function () {
+    var ranges = [
+            {% for year in chart %}
+                [{{ (year.year~'-01-02')|date('U')*1000 }}, {{ year.ippLowerBound }}, {{ year.ippUpperBound }}]
+                {% if not loop.last %},{% endif %}
+            {% endfor %}
+        ],
+        averages = [
+            {% for year in chart %}
+                [{{ (year.year~'-01-02')|date('U')*1000 }}, {{ year.ipp }}]
+                {% if not loop.last %},{% endif %}
+            {% endfor %}
+        ];
+
+    Highcharts.chart('ipp', {
+
+        chart: {
+            style: {
+                fontFamily: 'Source Sans Pro'
+            },
+            backgroundColor: '#F5F5F5'
+        },
+
+        credits: {
+            enabled: false
+        },
+
+        title: {
+            text: 'IPP (with upper and lower bounds)'
+        },
+
+        xAxis: {
+            type: 'datetime',
+            dateTimeLabelFormats: {
+                year: '%Y'
+            },
+            labels: {
+                style: {
+                    fontSize: '1.25rem'
+                }
+            }
+        },
+
+        yAxis: {
+            title: {
+                text: null
+            },
+            labels: {
+                style: {
+                    fontSize: '1.25rem'
+                }
+            }
+        },
+
+        tooltip: {
+            crosshairs: true,
+            shared: true,
+            dateTimeLabelFormats: {
+                hour: '%Y'
+            },
+            style: {
+                fontSize: '1rem'
+            }
+        },
+
+        legend: {
+        },
+
+        series: [{
+            name: 'IPP',
+            data: averages,
+            zIndex: 1,
+            marker: {
+                fillColor: 'white',
+                lineWidth: 2,
+                lineColor: Highcharts.getOptions().colors[0]
+            }
+        }, {
+            name: 'Range',
+            data: ranges,
+            type: 'arearange',
+            lineWidth: 0,
+            linkedTo: ':previous',
+            color: Highcharts.getOptions().colors[0],
+            fillOpacity: 0.3,
+            zIndex: 0
+        }]
+    });
+});
+</script>
+
+<script type="text/javascript">
+$(function () {
+    var ranges = [
+            {% for year in chart %}
+                [{{ (year.year~'-01-02')|date('U')*1000 }}, {{ year.snipLowerBound }}, {{ year.snipUpperBound }}]
+                {% if not loop.last %},{% endif %}
+            {% endfor %}
+        ],
+        averages = [
+            {% for year in chart %}
+                [{{ (year.year~'-01-02')|date('U')*1000 }}, {{ year.snip }}]
+                {% if not loop.last %},{% endif %}
+            {% endfor %}
+        ];
+
+    Highcharts.chart('snip', {
+
+        chart: {
+            style: {
+                fontFamily: 'Source Sans Pro'
+            },
+            backgroundColor: '#F5F5F5'
+        },
+
+        credits: {
+            enabled: false
+        },
+
+        title: {
+            text: 'SNIP (with upper and lower bounds)'
+        },
+
+        xAxis: {
+            type: 'datetime',
+            dateTimeLabelFormats: {
+                year: '%Y'
+            },
+            labels: {
+                style: {
+                    fontSize: '1.25rem'
+                }
+            }
+        },
+
+        yAxis: {
+            title: {
+                text: null
+            },
+            labels: {
+                style: {
+                    fontSize: '1.25rem'
+                }
+            }
+        },
+
+        tooltip: {
+            crosshairs: true,
+            shared: true,
+            dateTimeLabelFormats: {
+                hour: '%Y'
+            },
+            style: {
+                fontSize: '1rem'
+            }
+        },
+
+        legend: {
+        },
+
+        series: [{
+            name: 'SNIP',
+            data: averages,
+            zIndex: 1,
+            marker: {
+                fillColor: 'white',
+                lineWidth: 2,
+                lineColor: Highcharts.getOptions().colors[0]
+            }
+        }, {
+            name: 'Range',
+            data: ranges,
+            type: 'arearange',
+            lineWidth: 0,
+            linkedTo: ':previous',
+            color: Highcharts.getOptions().colors[0],
+            fillOpacity: 0.3,
+            zIndex: 0
+        }]
+    });
+});
+</script>
+
+<script type="text/javascript">
+$(function () {
+    var averages = [
+            {% for key, value in sjr %}
+                {% if value is not empty %}
+                    [{{ (key|replace({'sjr':''})~'-01-02')|date('U')*1000 }}, {{ value }}]
+                    {% if not loop.last %},{% endif %}
+                {% endif %}
+            {% endfor %}
+        ];
+
+    Highcharts.chart('sjr', {
+
+        chart: {
+            style: {
+                fontFamily: 'Source Sans Pro'
+            },
+            backgroundColor: '#F5F5F5'
+        },
+
+        credits: {
+            enabled: false
+        },
+
+        title: {
+            text: 'SJR'
+        },
+
+        xAxis: {
+            type: 'datetime',
+            dateTimeLabelFormats: {
+                year: '%Y'
+            },
+            labels: {
+                style: {
+                    fontSize: '1.25rem'
+                }
+            }
+        },
+
+        yAxis: {
+            title: {
+                text: null
+            },
+            labels: {
+                style: {
+                    fontSize: '1.25rem'
+                }
+            }
+        },
+
+        tooltip: {
+            crosshairs: true,
+            shared: true,
+            dateTimeLabelFormats: {
+                hour: '%Y'
+            },
+            style: {
+                fontSize: '1rem'
+            }
+        },
+
+        legend: {
+        },
+
+        series: [{
+            name: 'SJR',
+            data: averages,
+            zIndex: 1,
+            marker: {
+                fillColor: 'white',
+                lineWidth: 2,
+                lineColor: Highcharts.getOptions().colors[0]
+            }
+        }]
+    });
+});
+</script>
